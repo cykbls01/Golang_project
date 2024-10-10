@@ -12,7 +12,7 @@ var Client *sdk.Client
 
 func init() {
 	var err error
-	Client, err = sdk.NewClientWithOptions(util.Config["acr-regionid"], sdk.NewConfig(), credentials.NewAccessKeyCredential(util.Config["acs-ak"], util.Config["acs-sk"]))
+	Client, err = sdk.NewClientWithOptions(util.Config.MP["acr-regionid"], sdk.NewConfig(), credentials.NewAccessKeyCredential(util.Config.MP["acs-ak"], util.Config.MP["acs-sk"]))
 	log.Println("init acs success")
 	if err != nil {
 		panic(err)
@@ -24,13 +24,13 @@ func Request() *requests.CommonRequest {
 	request.SetScheme(requests.HTTP)
 	request.Product = "cr-ee"
 	request.Version = "2018-12-01"
-	request.Domain = util.Config["acr-endpoint"]
+	request.Domain = util.Config.MP["acr-endpoint"]
 	request.Method = "POST"
 
 	request.Headers["x-acs-caller-sdk-source"] = "cyk"
-	request.Headers["x-acs-organizationid"] = util.Config["acr-organizationid"]
-	request.Headers["x-acs-resourcegroupid"] = util.Config["acr-resourcegroupid"]
-	request.Headers["x-acs-instanceid"] = util.Config["acr-instanceid"]
-	request.Headers["x-acs-regionid"] = util.Config["acr-regionid"]
+	request.Headers["x-acs-organizationid"] = util.Config.MP["acr-organizationid"]
+	request.Headers["x-acs-resourcegroupid"] = util.Config.MP["acr-resourcegroupid"]
+	request.Headers["x-acs-instanceid"] = util.Config.MP["acr-instanceid"]
+	request.Headers["x-acs-regionid"] = util.Config.MP["acr-regionid"]
 	return request
 }

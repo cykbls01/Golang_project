@@ -1,12 +1,17 @@
 package util
 
 import (
+	"context"
 	"fmt"
+	"go.opentelemetry.io/otel"
 	"log"
 	"os"
 )
 
-func Write(list []Tag, mp map[string]string) {
+func Write(list []Tag, mp map[string]string, ctx context.Context) {
+	tracer := otel.Tracer("image-syncer")
+	_, span := tracer.Start(ctx, "file")
+	defer span.End()
 
 	file, err := os.Create("images.yaml")
 	if err != nil {

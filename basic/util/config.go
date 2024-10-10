@@ -1,12 +1,16 @@
 package util
 
 import (
+	"flag"
 	"gopkg.in/yaml.v3"
 	"log"
 	"os"
 )
 
-var Config map[string]string
+var Config struct {
+	MP     map[string]string
+	Method string
+}
 
 type Repository struct {
 	Namespace string `json:"RepoNamespaceName"`
@@ -34,5 +38,9 @@ func Load(configPath string) map[string]string {
 }
 
 func init() {
-
+	var configPath string
+	flag.StringVar(&configPath, "config", "config.yaml", "配置文件的路径")
+	flag.StringVar(&Config.Method, "main", "main", "执行方法")
+	flag.Parse()
+	Config.MP = Load(configPath)
 }

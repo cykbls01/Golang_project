@@ -12,12 +12,12 @@ var Client *swr.SwrClient
 
 func init() {
 	auth := basic.NewCredentialsBuilder().
-		WithAk(util.Config["hcs-ak"]).
-		WithSk(util.Config["hcs-sk"]).
+		WithAk(util.Config.MP["hcs-ak"]).
+		WithSk(util.Config.MP["hcs-sk"]).
 		Build()
 	Client = swr.NewSwrClient(
 		swr.SwrClientBuilder().
-			WithEndpoints([]string{util.Config["swr-endpoint"]}).
+			WithEndpoints([]string{util.Config.MP["swr-endpoint"]}).
 			WithCredential(auth).
 			WithHttpConfig(config.DefaultHttpConfig().WithIgnoreSSLVerification(true)).
 			Build())
