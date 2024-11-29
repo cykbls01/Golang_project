@@ -4,6 +4,7 @@ go 1.22.5
 
 require (
 	github.com/aliyun/alibaba-cloud-sdk-go v1.63.8
+	github.com/go-echarts/go-echarts/v2 v2.4.5
 	github.com/huaweicloud/huaweicloud-sdk-go-v3 v0.1.111
 	gopkg.in/yaml.v3 v3.0.1
 )

@@ -1,9 +1,9 @@
 package main
 
 import (
-	"basic/acs/acr"
-	"basic/hcs/swr"
-	"basic/hcs/tool"
+	"basic/cloud/acs/acr"
+	swr2 "basic/cloud/hcs/swr"
+	"basic/cloud/hcs/tool"
 	"basic/util"
 	"flag"
 	"fmt"
@@ -20,7 +20,7 @@ func main() {
 		namespaceList := strings.Split(util.Config.MP["filter"], "|")
 		tagList := make([]util.Tag, 0)
 		for _, namespace := range namespaceList {
-			swrRepos := swr.ListRepoByNamespace(namespace)
+			swrRepos := swr2.ListRepoByNamespace(namespace)
 			acrRepos := acr.ListRepoByNamespace(namespace)
 			list := util.FindUniqueRepo(swrRepos, acrRepos)
 			for _, repo := range list {
@@ -29,7 +29,7 @@ func main() {
 			}
 			offset, _ := strconv.Atoi(util.Config.MP["time-compare"])
 			for _, v := range tool.FilterRepoByTime(swrRepos, offset) {
-				swrTags := tool.FilterTagByTime(swr.ListTagByRepo(v), offset)
+				swrTags := tool.FilterTagByTime(swr2.ListTagByRepo(v), offset)
 				tagList = append(tagList, swrTags...)
 			}
 		}
