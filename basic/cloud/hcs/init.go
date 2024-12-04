@@ -10,7 +10,7 @@ import (
 
 var Client *swr.SwrClient
 
-func init() {
+func Init() {
 	auth := basic.NewCredentialsBuilder().
 		WithAk(util.Config.MP["hcs-ak"]).
 		WithSk(util.Config.MP["hcs-sk"]).

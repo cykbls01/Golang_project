@@ -1,7 +1,9 @@
 package main
 
 import (
+	"basic/cloud/acs"
 	"basic/cloud/acs/acr"
+	"basic/cloud/hcs"
 	swr2 "basic/cloud/hcs/swr"
 	"basic/cloud/hcs/tool"
 	"basic/util"
@@ -15,6 +17,11 @@ import (
 
 func main() {
 	log.Println("begin")
+
+	util.Init()
+	acs.Init()
+	hcs.Init()
+
 	switch util.Config.Method {
 	case "main":
 		namespaceList := strings.Split(util.Config.MP["filter"], "|")

@@ -10,7 +10,7 @@ import (
 
 var Client *sdk.Client
 
-func init() {
+func Init() {
 	var err error
 	Client, err = sdk.NewClientWithOptions(util.Config.MP["acr-regionid"], sdk.NewConfig(), credentials.NewAccessKeyCredential(util.Config.MP["acs-ak"], util.Config.MP["acs-sk"]))
 	log.Println("init acs success")
