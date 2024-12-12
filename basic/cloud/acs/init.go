@@ -19,7 +19,7 @@ func Init() {
 	}
 }
 
-func Request() *requests.CommonRequest {
+func AcrRequest() *requests.CommonRequest {
 	request := requests.NewCommonRequest()
 	request.SetScheme(requests.HTTP)
 	request.Product = "cr-ee"
@@ -32,5 +32,17 @@ func Request() *requests.CommonRequest {
 	request.Headers["x-acs-resourcegroupid"] = util.Config.MP["acr-resourcegroupid"]
 	request.Headers["x-acs-instanceid"] = util.Config.MP["acr-instanceid"]
 	request.Headers["x-acs-regionid"] = util.Config.MP["acr-regionid"]
+	return request
+}
+
+func AckRequest() *requests.CommonRequest {
+	request := requests.NewCommonRequest()
+	request.SetScheme(requests.HTTP)
+	request.Domain = util.Config.MP["ack-endpoint"]
+	request.Method = "POST"
+	request.Version = "2015-12-15"
+
+	request.Headers["Content-Type"] = "application/json"
+	request.Headers["x-acs-caller-sdk-source"] = "cyk"
 	return request
 }

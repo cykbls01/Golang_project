@@ -10,7 +10,7 @@ import (
 
 func ListTagByRepo(repo util.Repository) []util.Tag {
 
-	request := acs.Request()
+	request := acs.AcrRequest()
 
 	request.ApiName = "ListRepoTag"
 	request.QueryParams["InstanceId"] = "cri-private"

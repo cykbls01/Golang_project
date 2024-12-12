@@ -1,0 +1,12 @@
+{
+  "Method": "POST",
+  "Domain": "ack.com",
+  "SCHEME": "HTTP",
+  "Version": "2015-12-15",
+  "Headers": {
+    "Content-Type": "application/json",
+    "x-acs-caller-sdk-source": "cyk"
+  },
+  "PathPattern": "/clusters/id/policies/policy",
+  "Content": "{\"action\":\"deny\",\"parameters\":{\"allowedHostPaths\":[{\"readOnly\":true,\"pathPrefix\":\"\/\"}]}}"
+}

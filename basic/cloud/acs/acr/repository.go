@@ -10,7 +10,7 @@ import (
 )
 
 func CreateRepo(repo model.ShowReposResp) {
-	request := acs.Request()
+	request := acs.AcrRequest()
 
 	// 接口业务参数设置
 	request.ApiName = "CreateRepository"
@@ -30,7 +30,7 @@ func CreateRepo(repo model.ShowReposResp) {
 
 func ListRepoByNamespace(namespace string) []util.Repository {
 	// 创建API请求
-	request := acs.Request()
+	request := acs.AcrRequest()
 
 	request.ApiName = "ListRepository"
 	request.QueryParams["RepoNamespaceName"] = namespace

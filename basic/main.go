@@ -2,6 +2,7 @@ package main
 
 import (
 	"basic/cloud/acs"
+	"basic/cloud/acs/ack"
 	"basic/cloud/acs/acr"
 	"basic/cloud/hcs"
 	swr2 "basic/cloud/hcs/swr"
@@ -21,9 +22,8 @@ func main() {
 	util.Init()
 	acs.Init()
 	hcs.Init()
-
 	switch util.Config.Method {
-	case "main":
+	case "sync_image":
 		namespaceList := strings.Split(util.Config.MP["filter"], "|")
 		tagList := make([]util.Tag, 0)
 		for _, namespace := range namespaceList {
@@ -43,6 +43,10 @@ func main() {
 		tagList = append(tagList, util.Tag{Namespace: "acr-test", Tag: "latest", Repo: "nginx"})
 		log.Println("sync number: " + strconv.Itoa(len(tagList)))
 		util.Write(tagList, util.Config.MP)
+	case "deploy_policy":
+		fmt.Println("test")
+		ack.DeployPolicy(util.Config.MP["id"], util.Config.MP["policy"])
+		fmt.Println("test1")
 	default:
 		fmt.Printf("Error: unknown method '%s' (should not happen with default)\n", util.Config.Method)
 		flag.Usage()
