@@ -8,8 +8,9 @@ import (
 )
 
 var Config struct {
-	MP     map[string]string
-	Method string
+	MP       map[string]string
+	Method   string
+	DataPath string
 }
 
 type Repository struct {
@@ -41,6 +42,7 @@ func Init() {
 	var configPath string
 	flag.StringVar(&configPath, "config", "config.yaml", "配置文件的路径")
 	flag.StringVar(&Config.Method, "main", "main", "执行方法")
+	flag.StringVar(&Config.DataPath, "data", "data.json", "数据文件")
 	flag.Parse()
 	Config.MP = Load(configPath)
 }

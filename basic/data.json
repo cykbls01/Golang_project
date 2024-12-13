@@ -8,5 +8,5 @@
     "x-acs-caller-sdk-source": "cyk"
   },
   "PathPattern": "/clusters/id/policies/policy",
-  "Content": "{\"action\":\"deny\",\"parameters\":{\"allowedHostPaths\":[{\"readOnly\":true,\"pathPrefix\":\"\/\"}]}}"
+  "Content": "[{\"cluster\":\"333777\",\"is_custom\":false,\"role_name\":\"restricted\",\"role_type\":\"cluster\",\"is_ram_role\":true}]"
 }
