@@ -6,13 +6,9 @@ toolchain go1.23.3
 
 require (
 	github.com/aliyun/alibaba-cloud-sdk-go v1.63.8
-	github.com/chromedp/chromedp v0.11.2
-	github.com/go-echarts/go-echarts/v2 v2.4.5
 	github.com/huaweicloud/huaweicloud-sdk-go-v3 v0.1.111
 	github.com/xuri/excelize/v2 v2.9.0
 	gopkg.in/yaml.v3 v3.0.1
-	k8s.io/apimachinery v0.31.3
-	k8s.io/client-go v0.31.3
 )
 
 require (

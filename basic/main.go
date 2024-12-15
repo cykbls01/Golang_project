@@ -2,9 +2,9 @@ package main
 
 import (
 	"basic/cloud/acs"
-	"basic/cloud/acs/ack"
 	"basic/cloud/acs/acr"
 	"basic/cloud/hcs"
+	"basic/cloud/hcs/ecs"
 	swr2 "basic/cloud/hcs/swr"
 	"basic/cloud/hcs/tool"
 	"basic/util"
@@ -43,10 +43,8 @@ func main() {
 		tagList = append(tagList, util.Tag{Namespace: "acr-test", Tag: "latest", Repo: "nginx"})
 		log.Println("sync number: " + strconv.Itoa(len(tagList)))
 		util.Write(tagList, util.Config.MP)
-	case "deploy_policy":
-		fmt.Println("test")
-		ack.DeployPolicy(util.Config.MP["id"], util.Config.MP["policy"])
-		fmt.Println("test1")
+	case "list_server":
+		fmt.Println(ecs.ListServerID())
 	default:
 		fmt.Printf("Error: unknown method '%s' (should not happen with default)\n", util.Config.Method)
 		flag.Usage()
