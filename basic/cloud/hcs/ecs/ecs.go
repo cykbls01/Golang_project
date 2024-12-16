@@ -2,6 +2,7 @@ package ecs
 
 import (
 	"basic/util"
+	"fmt"
 	"github.com/huaweicloud/huaweicloud-sdk-go-v3/core/auth/basic"
 	"github.com/huaweicloud/huaweicloud-sdk-go-v3/core/config"
 	ecs "github.com/huaweicloud/huaweicloud-sdk-go-v3/services/ecs/v2"
@@ -27,10 +28,17 @@ func ListServer(project_id string) []model.NovaServer {
 	return *response.Servers
 }
 
-func ListServerID() []string {
+func ListServerID(projectIds []string) []string {
 	var ids []string
-	for _, item := range ListServer("d98fcad2881a42b393894817cc46fddf") {
-		ids = append(ids, item.Id)
+	fmt.Println(projectIds)
+	for _, pid := range projectIds {
+		if pid == "" {
+			continue
+		}
+		for _, item := range ListServer(pid) {
+			ids = append(ids, item.Id)
+		}
 	}
+	fmt.Println(ids)
 	return ids
 }

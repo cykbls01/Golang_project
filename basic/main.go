@@ -7,6 +7,7 @@ import (
 	"basic/cloud/hcs/ecs"
 	swr2 "basic/cloud/hcs/swr"
 	"basic/cloud/hcs/tool"
+	"basic/excel"
 	"basic/util"
 	"flag"
 	"fmt"
@@ -44,7 +45,7 @@ func main() {
 		log.Println("sync number: " + strconv.Itoa(len(tagList)))
 		util.Write(tagList, util.Config.MP)
 	case "list_server":
-		fmt.Println(ecs.ListServerID())
+		excel.NewFile("server.xlsx", "ids", ecs.ListServerID(excel.GetStrings()))
 	default:
 		fmt.Printf("Error: unknown method '%s' (should not happen with default)\n", util.Config.Method)
 		flag.Usage()

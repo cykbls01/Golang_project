@@ -6,7 +6,6 @@ import (
 )
 
 func GetStrings() []string {
-	// 打开 Excel 文件
 	f, err := excelize.OpenFile("data.xlsx")
 	if err != nil {
 		log.Fatal(err)
@@ -20,7 +19,7 @@ func GetStrings() []string {
 	ids := []string{}
 	for _, row := range rows {
 		if len(row) > 0 {
-			regionId := row[0] // 获取regionId列的值
+			regionId := row[0]
 			ids = append(ids, regionId)
 		}
 	}

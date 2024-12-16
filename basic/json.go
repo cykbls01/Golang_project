@@ -2,10 +2,8 @@ package main
 
 import (
 	_ "basic/cloud/acs"
-	"basic/excel"
 	_ "basic/util"
 	"encoding/json"
-	"fmt"
 	_ "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 	"io/ioutil"
 )
@@ -44,6 +42,4 @@ func main() {
 	//	log.Println(err.Error())
 	//}
 	//log.Println(response)
-
-	fmt.Println(excel.GetStrings())
 }
