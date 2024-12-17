@@ -23,3 +23,7 @@ func Init() {
 			Build())
 	log.Println("init swr success")
 }
+
+func GetToken() {
+
+}
