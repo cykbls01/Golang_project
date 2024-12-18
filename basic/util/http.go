@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"crypto/tls"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -51,13 +52,13 @@ func CallFromFile(endpoint, method, data string, headers map[string]string) *htt
 	return resp
 }
 
-func Call(endpoint, method string, data []byte, headers map[string]string) http.Response {
+func Call(endpoint, method string, data []byte, headers map[string]string) (http.Header, []byte) {
 	req, err := http.NewRequest(method, endpoint, bytes.NewBuffer(data))
 
 	for k, v := range headers {
 		req.Header.Set(k, v)
 	}
-
+	fmt.Println(req)
 	client := &http.Client{
 		Transport: &http.Transport{
 			TLSClientConfig: &tls.Config{InsecureSkipVerify: true}, // 禁用SSL证书验证
@@ -68,6 +69,7 @@ func Call(endpoint, method string, data []byte, headers map[string]string) http.
 	if err != nil {
 		log.Fatalf("Error sending request: %v", err)
 	}
+	body, _ := ioutil.ReadAll(resp.Body)
 	defer resp.Body.Close()
-	return *resp
+	return resp.Header, body
 }

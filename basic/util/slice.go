@@ -1,6 +1,9 @@
 package util
 
-import "github.com/huaweicloud/huaweicloud-sdk-go-v3/services/swr/v2/model"
+import (
+	"encoding/json"
+	"github.com/huaweicloud/huaweicloud-sdk-go-v3/services/swr/v2/model"
+)
 
 func Filter[T any](slice []T, predicate func(T) bool) []T {
 	var filtered []T
@@ -47,3 +50,22 @@ func FindUniqueTag(list1, list2 []Tag) []Tag {
 
 	return uniqueList
 }
+
+func ParseJSON[T any](data []byte) (T, error) {
+	var target T
+	if err := json.Unmarshal(data, &target); err != nil {
+		return target, err
+	}
+	return target, nil
+}
+
+//func ParseJSON[T any](data []byte) ([]T, error) {
+//	// 创建一个切片来存储解码后的T类型的值
+//	var result []T
+//
+//	// 使用json.Unmarshal将字节切片解码到目标类型的切片中
+//	if err := json.Unmarshal(data, &result); err != nil {
+//		return nil, err
+//	}
+//	return result, nil
+//}

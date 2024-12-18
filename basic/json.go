@@ -2,10 +2,13 @@ package main
 
 import (
 	_ "basic/cloud/acs"
+	"basic/cloud/hcs"
+	"basic/util"
 	_ "basic/util"
 	"encoding/json"
 	_ "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 	"io/ioutil"
+	"os"
 )
 
 type Content struct {
@@ -42,4 +45,6 @@ func main() {
 	//	log.Println(err.Error())
 	//}
 	//log.Println(response)
+	util.Init()
+	hcs.ListFsDetail(os.Args[1])
 }
