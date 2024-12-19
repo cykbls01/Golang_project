@@ -3,8 +3,10 @@ hcs-sk: vaWta1Yus29gfT0C1Gh3Eh39oV9PXFs5VUl4fych
 acs-ak: 0Q85TFcL80UmWGIO
 acs-sk: UXRGpGUuXogrVBRbvsJTajyP9wopED
 hcs-token-url: https://10.15.0.36:26335/v3/auth/tokens
+hcs-project-url: https://10.15.0.36:26335/v3/auth/projects
 swr-endpoint: swr-api.bj-kjy-50.cloud.clic
 ecs-endpoint: ecs.bj-kjy-50.cloud.clic
+vpc-endpoint: vpc.bj-kjy-50.cloud.clic
 sfs-endpoint: sfs.bj-kjy-50.cloud.clic
 swr-image-endpoint: swr.bj-kjy-50.cloud.clic
 acr-image-endpoint: cr-ee.registry.cn-beijing-acs-bj1.res.acs-cloud.clic

@@ -6,6 +6,7 @@ import (
 	"basic/util"
 	_ "basic/util"
 	"encoding/json"
+	"fmt"
 	_ "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 	"io/ioutil"
 	"os"
@@ -46,5 +47,5 @@ func main() {
 	//}
 	//log.Println(response)
 	util.Init()
-	hcs.ListFsDetail(os.Args[1])
+	fmt.Println(hcs.ListVPC(os.Args[1]))
 }
