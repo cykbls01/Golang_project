@@ -50,10 +50,26 @@ func ListVPC(projectId string) []VPC {
 	return rp.VPC
 }
 
-func ListAllLbDetail(projectId []string) []LoadBalancer {
+func ListAllLoadBalancer(projectId []Project) []LoadBalancer {
 	res := make([]LoadBalancer, 0)
 	for _, pid := range projectId {
-		res = append(res, ListLoadBalancer(pid)...)
+		res = append(res, ListLoadBalancer(pid.Id)...)
+	}
+	return res
+}
+
+func ListAllVPC(projectId []Project) []VPC {
+	res := make([]VPC, 0)
+	for _, pid := range projectId {
+		res = append(res, ListVPC(pid.Id)...)
+	}
+	return res
+}
+
+func ListAllSubnet(projectId []Project) []Subnet {
+	res := make([]Subnet, 0)
+	for _, pid := range projectId {
+		res = append(res, ListSubnet(pid.Id)...)
 	}
 	return res
 }

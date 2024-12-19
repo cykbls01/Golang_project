@@ -4,6 +4,7 @@ import (
 	"basic/util"
 	"encoding/json"
 	"fmt"
+	"strings"
 )
 
 type Project struct {
@@ -19,7 +20,13 @@ func ListProject() []Project {
 	}
 	var rp Resp
 	rp, _ = util.ParseJSON[Resp](body)
-	return rp.Projects
+	res := make([]Project, 0)
+	for _, v := range rp.Projects {
+		if strings.Contains(v.Name, "50") {
+			res = append(res, v)
+		}
+	}
+	return res
 }
 
 func GetGlobalToken() string {

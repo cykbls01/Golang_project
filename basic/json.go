@@ -3,13 +3,12 @@ package main
 import (
 	_ "basic/cloud/acs"
 	"basic/cloud/hcs"
+	"basic/excel"
 	"basic/util"
 	_ "basic/util"
 	"encoding/json"
-	"fmt"
 	_ "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 	"io/ioutil"
-	"os"
 )
 
 type Content struct {
@@ -47,5 +46,7 @@ func main() {
 	//}
 	//log.Println(response)
 	util.Init()
-	fmt.Println(hcs.ListVPC(os.Args[1]))
+	excel.Output(hcs.ListAllLoadBalancer(hcs.ListProject()), "lb.xlsx")
+	excel.Output(hcs.ListAllVPC(hcs.ListProject()), "vpc.xlsx")
+	excel.Output(hcs.ListAllSubnet(hcs.ListProject()), "subnet.xlsx")
 }
