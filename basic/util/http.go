@@ -54,11 +54,10 @@ func CallFromFile(endpoint, method, data string, headers map[string]string) *htt
 
 func Call(endpoint, method string, data []byte, headers map[string]string) (http.Header, []byte) {
 	req, err := http.NewRequest(method, endpoint, bytes.NewBuffer(data))
-
+	fmt.Println(req)
 	for k, v := range headers {
 		req.Header.Set(k, v)
 	}
-	fmt.Println(req)
 	client := &http.Client{
 		Transport: &http.Transport{
 			TLSClientConfig: &tls.Config{InsecureSkipVerify: true}, // 禁用SSL证书验证
@@ -66,6 +65,7 @@ func Call(endpoint, method string, data []byte, headers map[string]string) (http
 	}
 
 	resp, err := client.Do(req)
+	fmt.Println(resp)
 	if err != nil {
 		log.Fatalf("Error sending request: %v", err)
 	}

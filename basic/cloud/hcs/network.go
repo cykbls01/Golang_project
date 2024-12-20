@@ -1,6 +1,8 @@
 package hcs
 
-import "basic/util"
+import (
+	"basic/util"
+)
 
 type LoadBalancer struct {
 	Vip  string `json:"vip_address"`
@@ -71,5 +73,6 @@ func ListAllSubnet(projectId []Project) []Subnet {
 	for _, pid := range projectId {
 		res = append(res, ListSubnet(pid.Id)...)
 	}
+	res = util.FilterStructsByFieldName(res, "Cidr", "10").([]Subnet)
 	return res
 }

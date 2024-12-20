@@ -27,6 +27,7 @@ func Init() {
 func Call(projectId, endpoint, method string, data []byte) []byte {
 	_, body := util.Call(endpoint, method, data, map[string]string{
 		"X-Auth-Token": GetProjectToken(projectId),
+		"Content-Type": "application/json",
 	})
 	return body
 }
