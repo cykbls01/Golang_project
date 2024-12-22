@@ -22,7 +22,7 @@ func ListProject() []Project {
 	rp, _ = util.ParseJSON[Resp](body)
 	res := make([]Project, 0)
 	for _, v := range rp.Projects {
-		if strings.Contains(v.Name, "50_GF-shandong") {
+		if strings.Contains(v.Name, "50") {
 			res = append(res, v)
 		}
 	}

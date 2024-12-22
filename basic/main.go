@@ -4,10 +4,8 @@ import (
 	"basic/cloud/acs"
 	"basic/cloud/acs/acr"
 	"basic/cloud/hcs"
-	"basic/cloud/hcs/ecs"
 	swr2 "basic/cloud/hcs/swr"
 	"basic/cloud/hcs/tool"
-	"basic/excel"
 	"basic/util"
 	"flag"
 	"fmt"
@@ -44,8 +42,6 @@ func main() {
 		tagList = append(tagList, util.Tag{Namespace: "acr-test", Tag: "latest", Repo: "nginx"})
 		log.Println("sync number: " + strconv.Itoa(len(tagList)))
 		util.Write(tagList, util.Config.MP)
-	case "list_server":
-		excel.NewFile("server.xlsx", "ids", ecs.ListServerID(excel.GetStrings()))
 	default:
 		fmt.Printf("Error: unknown method '%s' (should not happen with default)\n", util.Config.Method)
 		flag.Usage()
