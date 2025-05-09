@@ -42,6 +42,16 @@ func main() {
 		tagList = append(tagList, util.Tag{Namespace: "acr-test", Tag: "latest", Repo: "nginx"})
 		log.Println("sync number: " + strconv.Itoa(len(tagList)))
 		util.Write(tagList, util.Config.MP)
+	case "backup_sync":
+		namespaceList := strings.Split(util.Config.MP["filter"], "|")
+		repoList := make([]util.Repository, 0)
+		for _, namespace := range namespaceList {
+			swrRepos := swr2.ListRepoByNamespace(namespace)
+			for _, repo := range swrRepos {
+				repoList = append(repoList, util.Repository{Name: repo.Name, Namespace: repo.Namespace})
+			}
+		}
+		util.WriteRepo(repoList, util.Config.MP)
 	default:
 		fmt.Printf("Error: unknown method '%s' (should not happen with default)\n", util.Config.Method)
 		flag.Usage()
