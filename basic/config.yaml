@@ -17,3 +17,4 @@ acr-organizationid: 72
 acr-resourcegroupid: 97
 time-compare: -1
 filter: ccp
+path: /data/cloud-native/kubeconfig/config/acs|/data/cloud-native/kubeconfig/config/region5
