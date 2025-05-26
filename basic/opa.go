@@ -25,6 +25,7 @@ type Data struct {
 	PodName     string   `json:"pod_name"`
 	Privileged  bool     `json:"privileged"`
 	HostPaths   []string `json:"host_paths"`
+	Sysctls     []string `json:"sysctls"`
 }
 
 type Namespace struct {
@@ -171,7 +172,7 @@ func WriteSliceToFile(data interface{}, filename string) error {
 }
 
 func isExcluded(ns string) bool {
-	excludeList := []string{"kube-system", "arms-prom", "falco", "kube-node-lease", "kube-public"}
+	excludeList := []string{"kube-system", "arms-prom", "falco", "kube-node-lease", "kube-public", "istio-system"}
 	for _, excluded := range excludeList {
 		if excluded == ns {
 			return true
@@ -209,6 +210,15 @@ func image_check(file string) {
 
 }
 
+func isPrivilieged(pod v1.Pod) bool {
+	for _, container := range pod.Spec.Containers {
+		if container.SecurityContext != nil && container.SecurityContext.Privileged != nil && *container.SecurityContext.Privileged {
+			return true
+		}
+	}
+	return false
+}
+
 func pod_check(path string) {
 	var result = make(map[string]Data)
 	namespaces := ListAllNamespaces(path)
@@ -226,18 +236,14 @@ func pod_check(path string) {
 		// 遍历Pod中的容器
 		for _, pod := range pods {
 			podName := pod.Name
-
-			// 检查容器安全上下文
-			for _, container := range pod.Spec.Containers {
-				// 检查特权模式
-				if container.SecurityContext != nil && container.SecurityContext.Privileged != nil && *container.SecurityContext.Privileged {
-					result[podName] = Data{
-						ClusterName: filepath.Base(path),
-						Namespace:   nsName,
-						PodName:     podName,
-						Privileged:  true,
-						HostPaths:   nil,
-					}
+			if isPrivilieged(pod) {
+				result[podName] = Data{
+					ClusterName: filepath.Base(path),
+					Namespace:   nsName,
+					PodName:     podName,
+					Privileged:  true,
+					HostPaths:   make([]string, 0),
+					Sysctls:     make([]string, 0),
 				}
 			}
 
@@ -257,6 +263,23 @@ func pod_check(path string) {
 							PodName:     podName,
 							Privileged:  false,
 							HostPaths:   []string{volume.HostPath.Path},
+							Sysctls:     make([]string, 0),
+						}
+					}
+				}
+			}
+			if pod.Spec.SecurityContext != nil && pod.Spec.SecurityContext.Sysctls != nil {
+				for _, sysctl := range pod.Spec.SecurityContext.Sysctls {
+					if value, ok := result[podName]; ok {
+						value.Sysctls = append(value.Sysctls, sysctl.Name+":"+sysctl.Value)
+					} else {
+						result[podName] = Data{
+							ClusterName: filepath.Base(path),
+							Namespace:   nsName,
+							PodName:     podName,
+							Privileged:  true,
+							HostPaths:   make([]string, 0),
+							Sysctls:     []string{sysctl.Name + ":" + sysctl.Value},
 						}
 					}
 				}
@@ -282,7 +305,7 @@ func main() {
 	os.Mkdir("pod_check", 0755)
 	os.Mkdir("image_check", 0755)
 	for _, file := range files {
-		image_check(file)
+		//image_check(file)
 		pod_check(file)
 	}
 }
