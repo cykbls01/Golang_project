@@ -1,0 +1,1444 @@
+{
+  "SchemaVersion": 2,
+  "CreatedAt": "2025-06-06T10:33:43.047698832+08:00",
+  "ArtifactName": "swr.bj-kjy-50.cloud.clic/cloud-guangdong/gdstaff-backend-conference:v20250529",
+  "ArtifactType": "container_image",
+  "Metadata": {
+    "OS": {
+      "Family": "ubuntu",
+      "Name": "24.04"
+    },
+    "ImageID": "sha256:f06eb177b701722c1905358a6ff0de079607047ca3008adaeb4eab1760ae910a",
+    "DiffIDs": [
+      "sha256:a30a5965a4f7d9d5ff76a46eb8939f58e95be844de1ac4a4b452d5d31158fdea",
+      "sha256:12fa8d9dfb01ad62678ef49769b8056bdd973b3e89840e3848d00416662bd2ca",
+      "sha256:4d1bfbae9b95b0d36eeaba7bce20dbed3c92b0f00c034f4fe2718a8b70ed3550",
+      "sha256:c4f6ab0fc7e12080b38cc59932cdb4d17a4e136f2fe62c8e9d33821774d7f349",
+      "sha256:c7a1c95150db8235277a28b2729357cbfc4e35654deb85fe202058a4c0820354",
+      "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "sha256:bb1139185ab2853ffacf57199f691db153b43826d1c34c60262d46f690771923",
+      "sha256:e174295e9aa94adb11e55338215f40e48da880110e1f7ca75a052717ca6a4207",
+      "sha256:1ce4dd7f28a041b362d115b4e204dd0c21d18b0674dfe2b7e1a519c86e938701",
+      "sha256:e580700e06d7bb454a0fa67950bdd723e246eb51192cc1e3f9a6643071f4b202",
+      "sha256:a3d65c6b5d85aef820cc7b1d5bbdeddf6244d99d32dddd8ef1ebca664cfdd8af"
+    ],
+    "RepoTags": [
+      "swr.bj-kjy-50.cloud.clic/cloud-guangdong/gdstaff-backend-conference:v20250529"
+    ],
+    "RepoDigests": [
+      "swr.bj-kjy-50.cloud.clic/cloud-guangdong/gdstaff-backend-conference@sha256:47058a78361fd270a45ec8294f51219fb8da7897d0b4874a790d575173f40da9"
+    ],
+    "ImageConfig": {
+      "architecture": "amd64",
+      "author": "642799232@qq.com",
+      "container": "e05bbf04b7e15bca9dc2dd7fd08eff4a222021a3a4bc101fa13eb154daf2f945",
+      "created": "2025-05-29T02:49:27.485395686Z",
+      "docker_version": "19.03.12",
+      "history": [
+        {
+          "created": "2024-06-07T12:00:06.72709713Z",
+          "created_by": "/bin/sh -c #(nop)  ARG RELEASE",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-06-07T12:00:06.753499353Z",
+          "created_by": "/bin/sh -c #(nop)  ARG LAUNCHPAD_BUILD_ARCH",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-06-07T12:00:06.771817804Z",
+          "created_by": "/bin/sh -c #(nop)  LABEL org.opencontainers.image.ref.name=ubuntu",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-06-07T12:00:06.798778174Z",
+          "created_by": "/bin/sh -c #(nop)  LABEL org.opencontainers.image.version=24.04",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-06-07T12:00:08.904584707Z",
+          "created_by": "/bin/sh -c #(nop) ADD file:5601f441718b0d192d73394b35fd07675342837ec9089ddd52dd1dc0de79630e in / "
+        },
+        {
+          "created": "2024-06-07T12:00:09.099611108Z",
+          "created_by": "/bin/sh -c #(nop)  CMD [\"/bin/bash\"]",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-07-24T22:19:06Z",
+          "created_by": "ENV JAVA_HOME=/opt/java/openjdk",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-07-24T22:19:06Z",
+          "created_by": "ENV PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-07-24T22:19:06Z",
+          "created_by": "ENV LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-07-24T22:19:06Z",
+          "created_by": "RUN /bin/sh -c set -eux;     apt-get update;     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends         curl         wget         fontconfig         ca-certificates p11-kit         tzdata         locales     ;     echo \"en_US.UTF-8 UTF-8\" \u003e\u003e /etc/locale.gen;     locale-gen en_US.UTF-8;     rm -rf /var/lib/apt/lists/* # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2024-07-24T22:19:06Z",
+          "created_by": "ENV JAVA_VERSION=jdk8u422-b05",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-07-24T22:19:06Z",
+          "created_by": "RUN /bin/sh -c set -eux;     ARCH=\"$(dpkg --print-architecture)\";     case \"${ARCH}\" in        amd64)          ESUM='0ac516cc1eadffb4cd3cfc9736a33d58ea6a396bf85729036c973482f7c063d9';          BINARY_URL='https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u422-b05/OpenJDK8U-jre_x64_linux_hotspot_8u422b05.tar.gz';          ;;        arm64)          ESUM='8fbefff2c578f73d95118d830347589ddc9aa84510200a5a5001901c2dea4810';          BINARY_URL='https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u422-b05/OpenJDK8U-jre_aarch64_linux_hotspot_8u422b05.tar.gz';          ;;        armhf)          ESUM='13bdefdeae6f18bc9c87bba18c853b8b12c5442ce07ff0a3956ce28776d695ff';          BINARY_URL='https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u422-b05/OpenJDK8U-jre_arm_linux_hotspot_8u422b05.tar.gz';          apt-get update;          DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends libatomic1;          rm -rf /var/lib/apt/lists/*;          ;;        ppc64el)          ESUM='2991edbedee448c0f1edf131beca84b415dac64ea97365b9bfd85bc2f39893bb';          BINARY_URL='https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u422-b05/OpenJDK8U-jre_ppc64le_linux_hotspot_8u422b05.tar.gz';          ;;        *)          echo \"Unsupported arch: ${ARCH}\";          exit 1;          ;;     esac;     wget --progress=dot:giga -O /tmp/openjdk.tar.gz ${BINARY_URL};     echo \"${ESUM} */tmp/openjdk.tar.gz\" | sha256sum -c -;     mkdir -p \"$JAVA_HOME\";     tar --extract         --file /tmp/openjdk.tar.gz         --directory \"$JAVA_HOME\"         --strip-components 1         --no-same-owner     ;     rm -f /tmp/openjdk.tar.gz ${JAVA_HOME}/lib/src.zip;     find \"$JAVA_HOME/lib\" -name '*.so' -exec dirname '{}' ';' | sort -u \u003e /etc/ld.so.conf.d/docker-openjdk.conf;     ldconfig; # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2024-07-24T22:19:06Z",
+          "created_by": "RUN /bin/sh -c set -eux;     echo \"Verifying install ...\";     echo \"java -version\"; java -version;     echo \"Complete.\" # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2024-07-24T22:19:06Z",
+          "created_by": "COPY entrypoint.sh /__cacert_entrypoint.sh # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2024-07-24T22:19:06Z",
+          "created_by": "ENTRYPOINT [\"/bin/bash\" \"/__cacert_entrypoint.sh\"]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-07-29T00:10:28.643615907Z",
+          "created_by": "ARG DIST=skywalking-agent",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-07-29T00:10:28.643615907Z",
+          "created_by": "RUN |1 DIST=skywalking-agent /bin/sh -c apk add --no-cache openssl || true # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2024-07-29T00:10:28.643615907Z",
+          "created_by": "LABEL maintainer=kezhenxu94@apache.org",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-07-29T00:10:28.643615907Z",
+          "created_by": "ENV JAVA_TOOL_OPTIONS=-javaagent:/skywalking/agent/skywalking-agent.jar",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-07-29T00:10:28.748677407Z",
+          "created_by": "WORKDIR /skywalking",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2024-07-29T00:10:29.122729554Z",
+          "created_by": "ADD skywalking-agent /skywalking/agent # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2024-07-29T00:10:29.9592066Z",
+          "created_by": "COPY /swctl /usr/bin/swctl # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "author": "642799232@qq.com",
+          "created": "2025-05-07T02:32:51.962485775Z",
+          "created_by": "/bin/sh -c #(nop)  MAINTAINER 642799232@qq.com",
+          "empty_layer": true
+        },
+        {
+          "author": "642799232@qq.com",
+          "created": "2025-05-29T02:49:23.377780142Z",
+          "created_by": "/bin/sh -c #(nop)  ENV TZ=Asia/Shanghai SW_AGENT_COLLECTOR_BACKEND_SERVICES=10.16.240.236:11800 SW_AGENT_NAME=gdstaff-backend-conference",
+          "empty_layer": true
+        },
+        {
+          "author": "642799232@qq.com",
+          "created": "2025-05-29T02:49:23.623023273Z",
+          "created_by": "/bin/sh -c #(nop)  EXPOSE 9158",
+          "empty_layer": true
+        },
+        {
+          "author": "642799232@qq.com",
+          "created": "2025-05-29T02:49:24.799010662Z",
+          "created_by": "/bin/sh -c mkdir -p /gdlife/gdstaff-backend-conference"
+        },
+        {
+          "author": "642799232@qq.com",
+          "created": "2025-05-29T02:49:25.154408086Z",
+          "created_by": "/bin/sh -c #(nop) WORKDIR /gdlife/gdstaff-backend-conference",
+          "empty_layer": true
+        },
+        {
+          "author": "642799232@qq.com",
+          "created": "2025-05-29T02:49:26.397932405Z",
+          "created_by": "/bin/sh -c #(nop) ADD file:5382fbbcffa765f14de7b13a2d8e3325a7358ca94238e6df8f6b955e2c2a55a9 in ./app.jar "
+        },
+        {
+          "author": "642799232@qq.com",
+          "created": "2025-05-29T02:49:27.191630232Z",
+          "created_by": "/bin/sh -c #(nop)  ENTRYPOINT [\"java\" \"-Djava.security.egd=file:/dev/./urandom\" \"-jar\" \"app.jar\"]",
+          "empty_layer": true
+        },
+        {
+          "author": "642799232@qq.com",
+          "created": "2025-05-29T02:49:27.485395686Z",
+          "created_by": "/bin/sh -c #(nop)  CMD [\"--spring.profiles.active=prod\"]",
+          "empty_layer": true
+        }
+      ],
+      "os": "linux",
+      "rootfs": {
+        "type": "layers",
+        "diff_ids": [
+          "sha256:a30a5965a4f7d9d5ff76a46eb8939f58e95be844de1ac4a4b452d5d31158fdea",
+          "sha256:12fa8d9dfb01ad62678ef49769b8056bdd973b3e89840e3848d00416662bd2ca",
+          "sha256:4d1bfbae9b95b0d36eeaba7bce20dbed3c92b0f00c034f4fe2718a8b70ed3550",
+          "sha256:c4f6ab0fc7e12080b38cc59932cdb4d17a4e136f2fe62c8e9d33821774d7f349",
+          "sha256:c7a1c95150db8235277a28b2729357cbfc4e35654deb85fe202058a4c0820354",
+          "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+          "sha256:bb1139185ab2853ffacf57199f691db153b43826d1c34c60262d46f690771923",
+          "sha256:e174295e9aa94adb11e55338215f40e48da880110e1f7ca75a052717ca6a4207",
+          "sha256:1ce4dd7f28a041b362d115b4e204dd0c21d18b0674dfe2b7e1a519c86e938701",
+          "sha256:e580700e06d7bb454a0fa67950bdd723e246eb51192cc1e3f9a6643071f4b202",
+          "sha256:a3d65c6b5d85aef820cc7b1d5bbdeddf6244d99d32dddd8ef1ebca664cfdd8af"
+        ]
+      },
+      "config": {
+        "Cmd": [
+          "--spring.profiles.active=prod"
+        ],
+        "Entrypoint": [
+          "java",
+          "-Djava.security.egd=file:/dev/./urandom",
+          "-jar",
+          "app.jar"
+        ],
+        "Env": [
+          "PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+          "JAVA_HOME=/opt/java/openjdk",
+          "LANG=en_US.UTF-8",
+          "LANGUAGE=en_US:en",
+          "LC_ALL=en_US.UTF-8",
+          "JAVA_VERSION=jdk8u422-b05",
+          "JAVA_TOOL_OPTIONS=-javaagent:/skywalking/agent/skywalking-agent.jar",
+          "TZ=Asia/Shanghai",
+          "SW_AGENT_COLLECTOR_BACKEND_SERVICES=10.16.240.236:11800",
+          "SW_AGENT_NAME=gdstaff-backend-conference"
+        ],
+        "Image": "sha256:5afd405c63421a5bf49b1646d3c9a7d44165ab5a94f845bec60480e94f89d195",
+        "Labels": {
+          "maintainer": "kezhenxu94@apache.org",
+          "org.opencontainers.image.ref.name": "ubuntu",
+          "org.opencontainers.image.version": "24.04"
+        },
+        "WorkingDir": "/gdlife/gdstaff-backend-conference",
+        "ExposedPorts": {
+          "9158/tcp": {}
+        }
+      }
+    }
+  },
+  "Results": [
+    {
+      "Target": "swr.bj-kjy-50.cloud.clic/cloud-guangdong/gdstaff-backend-conference:v20250529 (ubuntu 24.04)",
+      "Class": "os-pkgs",
+      "Type": "ubuntu"
+    },
+    {
+      "Target": "Java",
+      "Class": "lang-pkgs",
+      "Type": "jar",
+      "Vulnerabilities": [
+        {
+          "VulnerabilityID": "CVE-2023-24162",
+          "PkgName": "cn.hutool:hutool-all",
+          "PkgPath": "gdlife/gdstaff-backend-conference/app.jar/BOOT-INF/lib/hutool-all-5.8.0.M3.jar",
+          "PkgIdentifier": {
+            "PURL": "pkg:maven/cn.hutool/hutool-all@5.8.0.M3",
+            "UID": "871603d9c210cd47"
+          },
+          "InstalledVersion": "5.8.0.M3",
+          "Status": "affected",
+          "Layer": {
+            "Digest": "sha256:72fdf3f1dddf43b5a676cab4de987d0c52cae1371842e29eaa6fc6f5250d2157",
+            "DiffID": "sha256:a3d65c6b5d85aef820cc7b1d5bbdeddf6244d99d32dddd8ef1ebca664cfdd8af"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-24162",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory Maven",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Amaven"
+          },
+          "Title": "Dromara Hutool Deserialization of Untrusted Data vulnerability",
+          "Description": "Deserialization vulnerability in Dromara Hutool v5.8.11 allows attacker to execute arbitrary code via the XmlUtil.readObjectFromXml parameter.",
+          "Severity": "CRITICAL",
+          "CweIDs": [
+            "CWE-502"
+          ],
+          "VendorSeverity": {
+            "ghsa": 4,
+            "nvd": 4
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 9.8
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 9.8
+            }
+          },
+          "References": [
+            "https://gitee.com/dromara/hutool",
+            "https://gitee.com/dromara/hutool/issues/I6AEX2",
+            "https://github.com/dromara/hutool/issues/2855",
+            "https://nvd.nist.gov/vuln/detail/CVE-2023-24162"
+          ],
+          "PublishedDate": "2023-01-31T16:15:09.22Z",
+          "LastModifiedDate": "2024-11-21T07:47:31.093Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2023-24163",
+          "PkgName": "cn.hutool:hutool-all",
+          "PkgPath": "gdlife/gdstaff-backend-conference/app.jar/BOOT-INF/lib/hutool-all-5.8.0.M3.jar",
+          "PkgIdentifier": {
+            "PURL": "pkg:maven/cn.hutool/hutool-all@5.8.0.M3",
+            "UID": "871603d9c210cd47"
+          },
+          "InstalledVersion": "5.8.0.M3",
+          "FixedVersion": "5.8.21",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:72fdf3f1dddf43b5a676cab4de987d0c52cae1371842e29eaa6fc6f5250d2157",
+            "DiffID": "sha256:a3d65c6b5d85aef820cc7b1d5bbdeddf6244d99d32dddd8ef1ebca664cfdd8af"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-24163",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory Maven",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Amaven"
+          },
+          "Title": "Dromara hutool vulnerable to SQL Injection",
+          "Description": "SQL Inection vulnerability in Dromara hutool before 5.8.21 allows attacker to execute arbitrary code via the aviator template engine.",
+          "Severity": "CRITICAL",
+          "CweIDs": [
+            "CWE-89"
+          ],
+          "VendorSeverity": {
+            "ghsa": 4,
+            "nvd": 4
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 9.8
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 9.8
+            }
+          },
+          "References": [
+            "https://gitee.com/dromara/hutool",
+            "https://gitee.com/dromara/hutool/issues/I6AJWJ#note_15801868",
+            "https://gitee.com/dromara/hutool/issues/I6AJWJ#note_20057806_link",
+            "https://github.com/dromara/hutool/issues/3149",
+            "https://github.com/dromara/hutool/releases/tag/5.8.21",
+            "https://github.com/google/osv.dev/issues/2195",
+            "https://nvd.nist.gov/vuln/detail/CVE-2023-24163"
+          ],
+          "PublishedDate": "2023-01-31T16:15:09.27Z",
+          "LastModifiedDate": "2024-11-21T07:47:31.243Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2023-25330",
+          "PkgName": "com.baomidou:mybatis-plus",
+          "PkgPath": "gdlife/gdstaff-backend-conference/app.jar/BOOT-INF/lib/mybatis-plus-3.0.6.jar",
+          "PkgIdentifier": {
+            "PURL": "pkg:maven/com.baomidou/mybatis-plus@3.0.6",
+            "UID": "d8e81b5c23df0b2e"
+          },
+          "InstalledVersion": "3.0.6",
+          "FixedVersion": "3.5.3.1",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:72fdf3f1dddf43b5a676cab4de987d0c52cae1371842e29eaa6fc6f5250d2157",
+            "DiffID": "sha256:a3d65c6b5d85aef820cc7b1d5bbdeddf6244d99d32dddd8ef1ebca664cfdd8af"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-25330",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory Maven",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Amaven"
+          },
+          "Title": "MyBatis-Plus vulnerable to SQL injection via TenantPlugin",
+          "Description": "A SQL injection vulnerability in Mybatis plus below 3.5.3.1 allows remote attackers to execute arbitrary SQL commands via the tenant ID valuer. NOTE: the vendor's position is that this can only occur in a misconfigured application; the documentation discusses how to develop applications that avoid SQL injection.",
+          "Severity": "CRITICAL",
+          "CweIDs": [
+            "CWE-89"
+          ],
+          "VendorSeverity": {
+            "ghsa": 4,
+            "nvd": 4
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 9.8
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 9.8
+            }
+          },
+          "References": [
+            "https://baomidou.com/reference/about-cve",
+            "https://baomidou.com/reference/about-cve/",
+            "https://github.com/FCncdn/MybatisPlusTenantPluginSQLInjection-POC/blob/master/Readme.en.md",
+            "https://github.com/baomidou/mybatis-plus",
+            "https://nvd.nist.gov/vuln/detail/CVE-2023-25330"
+          ],
+          "PublishedDate": "2023-04-05T14:15:07.48Z",
+          "LastModifiedDate": "2024-11-21T07:49:25Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2016-1000031",
+          "PkgName": "commons-fileupload:commons-fileupload",
+          "PkgPath": "gdlife/gdstaff-backend-conference/app.jar/BOOT-INF/lib/commons-fileupload-1.2.2.jar",
+          "PkgIdentifier": {
+            "PURL": "pkg:maven/commons-fileupload/commons-fileupload@1.2.2",
+            "UID": "982b8265fe7d2aa1"
+          },
+          "InstalledVersion": "1.2.2",
+          "FixedVersion": "1.3.3",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:72fdf3f1dddf43b5a676cab4de987d0c52cae1371842e29eaa6fc6f5250d2157",
+            "DiffID": "sha256:a3d65c6b5d85aef820cc7b1d5bbdeddf6244d99d32dddd8ef1ebca664cfdd8af"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2016-1000031",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory Maven",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Amaven"
+          },
+          "Title": "FileUpload: DiskFileItem file manipulation",
+          "Description": "Apache Commons FileUpload before 1.3.3 DiskFileItem File Manipulation Remote Code Execution",
+          "Severity": "CRITICAL",
+          "CweIDs": [
+            "CWE-284"
+          ],
+          "VendorSeverity": {
+            "ghsa": 4,
+            "nvd": 4,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 9.8
+            },
+            "nvd": {
+              "V2Vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P",
+              "V3Vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V2Score": 7.5,
+              "V3Score": 9.8
+            },
+            "redhat": {
+              "V2Vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P",
+              "V3Vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+              "V2Score": 6.8,
+              "V3Score": 7.3
+            }
+          },
+          "References": [
+            "http://lists.opensuse.org/opensuse-security-announce/2019-05/msg00036.html",
+            "http://www.oracle.com/technetwork/security-advisory/cpuoct2018-4428296.html",
+            "http://www.securityfocus.com/bid/93604",
+            "http://www.tenable.com/security/research/tra-2016-12",
+            "http://www.zerodayinitiative.com/advisories/ZDI-16-570",
+            "http://www.zerodayinitiative.com/advisories/ZDI-16-570/",
+            "https://access.redhat.com/security/cve/CVE-2016-1000031",
+            "https://github.com/advisories/GHSA-7x9j-7223-rg5m",
+            "https://issues.apache.org/jira/browse/FILEUPLOAD-279",
+            "https://issues.apache.org/jira/browse/WW-4812",
+            "https://lists.apache.org/thread.html/708d94141126eac03011144a971a6411fcac16d9c248d1d535a39451%40%3Csolr-user.lucene.apache.org%3E",
+            "https://lists.apache.org/thread.html/708d94141126eac03011144a971a6411fcac16d9c248d1d535a39451@%3Csolr-user.lucene.apache.org%3E",
+            "https://lists.apache.org/thread.html/d66657323fd25e437face5e84899c8ca404ccd187e81c3f2fa8b6080%40%3Cannounce.apache.org%3E",
+            "https://lists.apache.org/thread.html/d66657323fd25e437face5e84899c8ca404ccd187e81c3f2fa8b6080@%3Cannounce.apache.org%3E",
+            "https://nvd.nist.gov/vuln/detail/CVE-2016-1000031",
+            "https://security.netapp.com/advisory/ntap-20190212-0001",
+            "https://security.netapp.com/advisory/ntap-20190212-0001/",
+            "https://www.cve.org/CVERecord?id=CVE-2016-1000031",
+            "https://www.oracle.com/security-alerts/cpuapr2020.html",
+            "https://www.oracle.com/security-alerts/cpujan2020.html",
+            "https://www.oracle.com/security-alerts/cpujan2021.html",
+            "https://www.oracle.com/security-alerts/cpujul2020.html",
+            "https://www.oracle.com/security-alerts/cpujul2022.html",
+            "https://www.oracle.com/security-alerts/cpuoct2020.html",
+            "https://www.oracle.com/security-alerts/cpuoct2021.html",
+            "https://www.oracle.com/technetwork/security-advisory/cpuapr2019-5072813.html",
+            "https://www.oracle.com/technetwork/security-advisory/cpujan2019-5072801.html",
+            "https://www.oracle.com/technetwork/security-advisory/cpujul2019-5072835.html",
+            "https://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html",
+            "https://www.oracle.com/technetwork/security-advisory/cpuoct2019-5072832.html",
+            "https://www.tenable.com/security/research/tra-2016-12",
+            "https://www.tenable.com/security/research/tra-2016-23",
+            "https://www.tenable.com/security/research/tra-2016-30"
+          ],
+          "PublishedDate": "2016-10-25T14:29:00.18Z",
+          "LastModifiedDate": "2024-11-21T02:42:51.31Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2019-17495",
+          "PkgName": "io.springfox:springfox-swagger-ui",
+          "PkgPath": "gdlife/gdstaff-backend-conference/app.jar/BOOT-INF/lib/springfox-swagger-ui-2.7.0.jar",
+          "PkgIdentifier": {
+            "PURL": "pkg:maven/io.springfox/springfox-swagger-ui@2.7.0",
+            "UID": "458ee4ac431198ac"
+          },
+          "InstalledVersion": "2.7.0",
+          "FixedVersion": "2.10.0",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:72fdf3f1dddf43b5a676cab4de987d0c52cae1371842e29eaa6fc6f5250d2157",
+            "DiffID": "sha256:a3d65c6b5d85aef820cc7b1d5bbdeddf6244d99d32dddd8ef1ebca664cfdd8af"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2019-17495",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory Maven",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Amaven"
+          },
+          "Title": "Cross-site scripting in Swagger-UI",
+          "Description": "A Cascading Style Sheets (CSS) injection vulnerability in Swagger UI before 3.23.11 allows attackers to use the Relative Path Overwrite (RPO) technique to perform CSS-based input field value exfiltration, such as exfiltration of a CSRF token value. In other words, this product intentionally allows the embedding of untrusted JSON data from remote servers, but it was not previously known that \u003cstyle\u003e@import within the JSON data was a functional attack method.",
+          "Severity": "CRITICAL",
+          "CweIDs": [
+            "CWE-352"
+          ],
+          "VendorSeverity": {
+            "ghsa": 4,
+            "nvd": 4
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 9.8
+            },
+            "nvd": {
+              "V2Vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P",
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V2Score": 7.5,
+              "V3Score": 9.8
+            }
+          },
+          "References": [
+            "https://github.com/springfox/springfox/commit/26f72f0d16b166e12c20255a4ee907dc10685cf8",
+            "https://github.com/swagger-api/swagger-ui",
+            "https://github.com/swagger-api/swagger-ui/releases/tag/v3.23.11",
+            "https://github.com/tarantula-team/CSS-injection-in-Swagger-UI",
+            "https://lists.apache.org/thread.html/r103579b01da2d0aa0f672b88f811224bbf8ef493aaad845895955e91%40%3Ccommits.airflow.apache.org%3E",
+            "https://lists.apache.org/thread.html/r103579b01da2d0aa0f672b88f811224bbf8ef493aaad845895955e91@%3Ccommits.airflow.apache.org%3E",
+            "https://lists.apache.org/thread.html/r3acb7e494cf1aab99b6784b7c5bbddfd0d4f8a484ab534c3a61ef9cf%40%3Ccommits.airflow.apache.org%3E",
+            "https://lists.apache.org/thread.html/r3acb7e494cf1aab99b6784b7c5bbddfd0d4f8a484ab534c3a61ef9cf@%3Ccommits.airflow.apache.org%3E",
+            "https://lists.apache.org/thread.html/r84b327f7a8b6b28857b906c07a66dd98e1d341191fa8d7816514ef96%40%3Ccommits.airflow.apache.org%3E",
+            "https://lists.apache.org/thread.html/r84b327f7a8b6b28857b906c07a66dd98e1d341191fa8d7816514ef96@%3Ccommits.airflow.apache.org%3E",
+            "https://lists.apache.org/thread.html/r853ffeb915a400f899de78124d4e0d77a19379d2e11bf8f4e98c624f%40%3Ccommits.airflow.apache.org%3E",
+            "https://lists.apache.org/thread.html/r853ffeb915a400f899de78124d4e0d77a19379d2e11bf8f4e98c624f@%3Ccommits.airflow.apache.org%3E",
+            "https://lists.apache.org/thread.html/ref70b940c4f69560d29d6ba792d6c82865e74de3dcad4c92d99b1f8f%40%3Ccommits.airflow.apache.org%3E",
+            "https://lists.apache.org/thread.html/ref70b940c4f69560d29d6ba792d6c82865e74de3dcad4c92d99b1f8f@%3Ccommits.airflow.apache.org%3E",
+            "https://nvd.nist.gov/vuln/detail/CVE-2019-17495",
+            "https://security.snyk.io/vuln/maven?search=CVE-2019-17495",
+            "https://www.oracle.com/security-alerts/cpuApr2021.html",
+            "https://www.oracle.com/security-alerts/cpujan2022.html",
+            "https://www.oracle.com/security-alerts/cpujul2022.html",
+            "https://www.oracle.com/security-alerts/cpuoct2020.html"
+          ],
+          "PublishedDate": "2019-10-10T22:15:10.29Z",
+          "LastModifiedDate": "2024-11-21T04:32:22.363Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2021-41303",
+          "PkgName": "org.apache.shiro:shiro-core",
+          "PkgPath": "gdlife/gdstaff-backend-conference/app.jar/BOOT-INF/lib/shiro-core-1.7.1.jar",
+          "PkgIdentifier": {
+            "PURL": "pkg:maven/org.apache.shiro/shiro-core@1.7.1",
+            "UID": "228319f12e046b7"
+          },
+          "InstalledVersion": "1.7.1",
+          "FixedVersion": "1.8.0",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:72fdf3f1dddf43b5a676cab4de987d0c52cae1371842e29eaa6fc6f5250d2157",
+            "DiffID": "sha256:a3d65c6b5d85aef820cc7b1d5bbdeddf6244d99d32dddd8ef1ebca664cfdd8af"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2021-41303",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory Maven",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Amaven"
+          },
+          "Title": "shiro: specially crafted HTTP request may cause an authentication bypass",
+          "Description": "Apache Shiro before 1.8.0, when using Apache Shiro with Spring Boot, a specially crafted HTTP request may cause an authentication bypass. Users should update to Apache Shiro 1.8.0.",
+          "Severity": "CRITICAL",
+          "CweIDs": [
+            "CWE-287"
+          ],
+          "VendorSeverity": {
+            "ghsa": 4,
+            "nvd": 4,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 9.8
+            },
+            "nvd": {
+              "V2Vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P",
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V2Score": 7.5,
+              "V3Score": 9.8
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 9.8
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2021-41303",
+            "https://lists.apache.org/thread.html/raae98bb934e4bde304465896ea02d9798e257e486d04a42221e2c41b%40%3Cuser.shiro.apache.org%3E",
+            "https://lists.apache.org/thread.html/raae98bb934e4bde304465896ea02d9798e257e486d04a42221e2c41b@%3Cuser.shiro.apache.org%3E",
+            "https://lists.apache.org/thread.html/re470be1ffea44bca28ccb0e67a4cf5d744e2d2b981d00fdbbf5abc13%40%3Cannounce.shiro.apache.org%3E",
+            "https://nvd.nist.gov/vuln/detail/CVE-2021-41303",
+            "https://security.netapp.com/advisory/ntap-20220609-0001",
+            "https://security.netapp.com/advisory/ntap-20220609-0001/",
+            "https://www.cve.org/CVERecord?id=CVE-2021-41303",
+            "https://www.oracle.com/security-alerts/cpujul2022.html"
+          ],
+          "PublishedDate": "2021-09-17T09:15:09.267Z",
+          "LastModifiedDate": "2024-11-21T06:26:00.263Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2022-32532",
+          "PkgName": "org.apache.shiro:shiro-core",
+          "PkgPath": "gdlife/gdstaff-backend-conference/app.jar/BOOT-INF/lib/shiro-core-1.7.1.jar",
+          "PkgIdentifier": {
+            "PURL": "pkg:maven/org.apache.shiro/shiro-core@1.7.1",
+            "UID": "228319f12e046b7"
+          },
+          "InstalledVersion": "1.7.1",
+          "FixedVersion": "1.9.1",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:72fdf3f1dddf43b5a676cab4de987d0c52cae1371842e29eaa6fc6f5250d2157",
+            "DiffID": "sha256:a3d65c6b5d85aef820cc7b1d5bbdeddf6244d99d32dddd8ef1ebca664cfdd8af"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-32532",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory Maven",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Amaven"
+          },
+          "Title": "shiro: authorization bypass due to possible misconfigured",
+          "Description": "Apache Shiro before 1.9.1, A RegexRequestMatcher can be misconfigured to be bypassed on some servlet containers. Applications using RegExPatternMatcher with `.` in the regular expression are possibly vulnerable to an authorization bypass.",
+          "Severity": "CRITICAL",
+          "CweIDs": [
+            "CWE-863"
+          ],
+          "VendorSeverity": {
+            "ghsa": 4,
+            "nvd": 4,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 9.8
+            },
+            "nvd": {
+              "V2Vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P",
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V2Score": 7.5,
+              "V3Score": 9.8
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 8.1
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2022-32532",
+            "https://github.com/apache/shiro",
+            "https://lists.apache.org/thread/y8260dw8vbm99oq7zv6y3mzn5ovk90xh",
+            "https://nvd.nist.gov/vuln/detail/CVE-2022-32532",
+            "https://www.cve.org/CVERecord?id=CVE-2022-32532"
+          ],
+          "PublishedDate": "2022-06-29T00:15:10.247Z",
+          "LastModifiedDate": "2024-11-21T07:06:34.577Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2022-40664",
+          "PkgName": "org.apache.shiro:shiro-core",
+          "PkgPath": "gdlife/gdstaff-backend-conference/app.jar/BOOT-INF/lib/shiro-core-1.7.1.jar",
+          "PkgIdentifier": {
+            "PURL": "pkg:maven/org.apache.shiro/shiro-core@1.7.1",
+            "UID": "228319f12e046b7"
+          },
+          "InstalledVersion": "1.7.1",
+          "FixedVersion": "1.10.0",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:72fdf3f1dddf43b5a676cab4de987d0c52cae1371842e29eaa6fc6f5250d2157",
+            "DiffID": "sha256:a3d65c6b5d85aef820cc7b1d5bbdeddf6244d99d32dddd8ef1ebca664cfdd8af"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-40664",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory Maven",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Amaven"
+          },
+          "Title": "shiro: Authentication Bypass Vulnerability",
+          "Description": "Apache Shiro before 1.10.0, Authentication Bypass Vulnerability in Shiro when forwarding or including via RequestDispatcher.",
+          "Severity": "CRITICAL",
+          "CweIDs": [
+            "CWE-287"
+          ],
+          "VendorSeverity": {
+            "ghsa": 4,
+            "nvd": 4,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 9.8
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 9.8
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 9.8
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2022/10/12/1",
+            "http://www.openwall.com/lists/oss-security/2022/10/12/2",
+            "http://www.openwall.com/lists/oss-security/2022/10/13/1",
+            "https://access.redhat.com/security/cve/CVE-2022-40664",
+            "https://github.com/apache/shiro",
+            "https://lists.apache.org/thread/loc2ktxng32xpy7lfwxto13k4lvnhjwg",
+            "https://nvd.nist.gov/vuln/detail/CVE-2022-40664",
+            "https://security.netapp.com/advisory/ntap-20221118-0005",
+            "https://security.netapp.com/advisory/ntap-20221118-0005/",
+            "https://shiro.apache.org/blog/2022/10/10/2022/apache-shiro-1101-released.html",
+            "https://www.cve.org/CVERecord?id=CVE-2022-40664"
+          ],
+          "PublishedDate": "2022-10-12T07:15:09.1Z",
+          "LastModifiedDate": "2024-11-21T07:21:49.007Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2023-34478",
+          "PkgName": "org.apache.shiro:shiro-web",
+          "PkgPath": "gdlife/gdstaff-backend-conference/app.jar/BOOT-INF/lib/shiro-web-1.7.1.jar",
+          "PkgIdentifier": {
+            "PURL": "pkg:maven/org.apache.shiro/shiro-web@1.7.1",
+            "UID": "336fe8d4f5baf725"
+          },
+          "InstalledVersion": "1.7.1",
+          "FixedVersion": "1.12.0, 2.0.0-alpha-3",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:72fdf3f1dddf43b5a676cab4de987d0c52cae1371842e29eaa6fc6f5250d2157",
+            "DiffID": "sha256:a3d65c6b5d85aef820cc7b1d5bbdeddf6244d99d32dddd8ef1ebca664cfdd8af"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-34478",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory Maven",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Amaven"
+          },
+          "Title": "Apache Shiro, before 1.12.0 or 2.0.0-alpha-3, may be susceptible to a  ...",
+          "Description": "Apache Shiro, before 1.12.0 or 2.0.0-alpha-3, may be susceptible to a path traversal attack that results in an authentication bypass when used together with APIs or other web frameworks that route requests based on non-normalized requests.\n\nMitigation: Update to Apache Shiro 1.12.0+ or 2.0.0-alpha-3+",
+          "Severity": "CRITICAL",
+          "CweIDs": [
+            "CWE-22"
+          ],
+          "VendorSeverity": {
+            "ghsa": 4,
+            "nvd": 4,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 9.8
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 9.8
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2023/07/24/4",
+            "https://github.com/apache/shiro",
+            "https://github.com/apache/shiro/commit/c3ede3f94efb442acb0795714a022c2c121d1da0",
+            "https://lists.apache.org/thread/mbv26onkgw9o35rldh7vmq11wpv2t2qk",
+            "https://nvd.nist.gov/vuln/detail/CVE-2023-34478",
+            "https://security.netapp.com/advisory/ntap-20230915-0005",
+            "https://security.netapp.com/advisory/ntap-20230915-0005/",
+            "https://ubuntu.com/security/notices/USN-7147-1",
+            "https://www.cve.org/CVERecord?id=CVE-2023-34478",
+            "https://www.openwall.com/lists/oss-security/2023/07/24/4"
+          ],
+          "PublishedDate": "2023-07-24T19:15:10.63Z",
+          "LastModifiedDate": "2025-02-13T17:16:38.883Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2019-13990",
+          "PkgName": "org.quartz-scheduler:quartz",
+          "PkgPath": "gdlife/gdstaff-backend-conference/app.jar/BOOT-INF/lib/quartz-2.3.0.jar",
+          "PkgIdentifier": {
+            "PURL": "pkg:maven/org.quartz-scheduler/quartz@2.3.0",
+            "UID": "ed82f72c7a7a901f"
+          },
+          "InstalledVersion": "2.3.0",
+          "FixedVersion": "2.3.2",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:72fdf3f1dddf43b5a676cab4de987d0c52cae1371842e29eaa6fc6f5250d2157",
+            "DiffID": "sha256:a3d65c6b5d85aef820cc7b1d5bbdeddf6244d99d32dddd8ef1ebca664cfdd8af"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2019-13990",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory Maven",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Amaven"
+          },
+          "Title": "libquartz: XXE attacks via job description",
+          "Description": "initDocumentParser in xml/XMLSchedulingDataProcessor.java in Terracotta Quartz Scheduler through 2.3.0 allows XXE attacks via a job description.",
+          "Severity": "CRITICAL",
+          "CweIDs": [
+            "CWE-611"
+          ],
+          "VendorSeverity": {
+            "ghsa": 4,
+            "nvd": 4,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 9.8
+            },
+            "nvd": {
+              "V2Vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P",
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V2Score": 7.5,
+              "V3Score": 9.8
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 8.1
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2019-13990",
+            "https://confluence.atlassian.com/security/ssot-117-cve-2019-13990-xxe-xml-external-entity-injection-vulnerability-in-jira-service-management-data-center-and-jira-service-management-server-1295385959.html",
+            "https://github.com/quartz-scheduler/quartz",
+            "https://github.com/quartz-scheduler/quartz/commit/13c1d45aa1db15d0fa0e4997139c99ba219be551",
+            "https://github.com/quartz-scheduler/quartz/issues/467",
+            "https://github.com/quartz-scheduler/quartz/pull/501",
+            "https://lists.apache.org/thread.html/172d405e556e2f1204be126bb3eb28c5115af91bcc1651b4e870bb82%40%3Cdev.tomee.apache.org%3E",
+            "https://lists.apache.org/thread.html/172d405e556e2f1204be126bb3eb28c5115af91bcc1651b4e870bb82@%3Cdev.tomee.apache.org%3E",
+            "https://lists.apache.org/thread.html/1870324fea41ea68cff2fd1bf6ee2747432dc1d9d22a22cc681e0ec3%40%3Cdev.tomee.apache.org%3E",
+            "https://lists.apache.org/thread.html/1870324fea41ea68cff2fd1bf6ee2747432dc1d9d22a22cc681e0ec3@%3Cdev.tomee.apache.org%3E",
+            "https://lists.apache.org/thread.html/6b6e3480b19856365fb5eef03aa0915a4679de4b019a1e975502d949%40%3Cdev.tomee.apache.org%3E",
+            "https://lists.apache.org/thread.html/6b6e3480b19856365fb5eef03aa0915a4679de4b019a1e975502d949@%3Cdev.tomee.apache.org%3E",
+            "https://lists.apache.org/thread.html/e493e718a50f21201e05e82d42a8796b4046e83f0d286b90e58e0629%40%3Cdev.tomee.apache.org%3E",
+            "https://lists.apache.org/thread.html/e493e718a50f21201e05e82d42a8796b4046e83f0d286b90e58e0629@%3Cdev.tomee.apache.org%3E",
+            "https://lists.apache.org/thread.html/f74b170d3d58d7a24db1afd3908bb0ab58a3900e16e73275674cdfaf%40%3Ccommits.tomee.apache.org%3E",
+            "https://lists.apache.org/thread.html/f74b170d3d58d7a24db1afd3908bb0ab58a3900e16e73275674cdfaf@%3Ccommits.tomee.apache.org%3E",
+            "https://lists.apache.org/thread.html/r21df13c8bd2c2eae4b9661aae814c4a2a814d1f7875c765b8b115c9a%40%3Ccommits.tomee.apache.org%3E",
+            "https://lists.apache.org/thread.html/r21df13c8bd2c2eae4b9661aae814c4a2a814d1f7875c765b8b115c9a@%3Ccommits.tomee.apache.org%3E",
+            "https://lists.apache.org/thread.html/r3a6884e8d819f32cde8c07b98934de3e80467859880f784950bf44cf%40%3Ccommits.tomee.apache.org%3E",
+            "https://lists.apache.org/thread.html/r3a6884e8d819f32cde8c07b98934de3e80467859880f784950bf44cf@%3Ccommits.tomee.apache.org%3E",
+            "https://lists.apache.org/thread.html/re9b56ac1934d7bf16afc83eac1c39c98c1b20b4b15891dce923bf8aa%40%3Ccommits.tomee.apache.org%3E",
+            "https://lists.apache.org/thread.html/re9b56ac1934d7bf16afc83eac1c39c98c1b20b4b15891dce923bf8aa@%3Ccommits.tomee.apache.org%3E",
+            "https://nvd.nist.gov/vuln/detail/CVE-2019-13990",
+            "https://security.netapp.com/advisory/ntap-20221028-0002",
+            "https://security.netapp.com/advisory/ntap-20221028-0002/",
+            "https://snyk.io/vuln/SNYK-JAVA-ORGQUARTZSCHEDULER-461170",
+            "https://www.cve.org/CVERecord?id=CVE-2019-13990",
+            "https://www.oracle.com//security-alerts/cpujul2021.html",
+            "https://www.oracle.com/security-alerts/cpuapr2020.html",
+            "https://www.oracle.com/security-alerts/cpujan2021.html",
+            "https://www.oracle.com/security-alerts/cpujul2020.html",
+            "https://www.oracle.com/security-alerts/cpuoct2020.html",
+            "https://www.oracle.com/security-alerts/cpuoct2021.html"
+          ],
+          "PublishedDate": "2019-07-26T19:15:11.73Z",
+          "LastModifiedDate": "2024-11-21T04:25:50.49Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2023-42809",
+          "PkgName": "org.redisson:redisson",
+          "PkgPath": "gdlife/gdstaff-backend-conference/app.jar/BOOT-INF/lib/redisson-3.11.4.jar",
+          "PkgIdentifier": {
+            "PURL": "pkg:maven/org.redisson/redisson@3.11.4",
+            "UID": "efa69b9dc9d8ac2f"
+          },
+          "InstalledVersion": "3.11.4",
+          "FixedVersion": "3.22.0",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:72fdf3f1dddf43b5a676cab4de987d0c52cae1371842e29eaa6fc6f5250d2157",
+            "DiffID": "sha256:a3d65c6b5d85aef820cc7b1d5bbdeddf6244d99d32dddd8ef1ebca664cfdd8af"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-42809",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory Maven",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Amaven"
+          },
+          "Title": "org.redisson:redisson: Redisson vulnerable to Deserialization of Untrusted Data",
+          "Description": "Redisson is a Java Redis client that uses the Netty framework. Prior to version 3.22.0, some of the messages received from the Redis server contain Java objects that the client deserializes without further validation. Attackers that manage to trick clients into communicating with a malicious server can include especially crafted objects in its responses that, once deserialized by the client, force it to execute arbitrary code. This can be abused to take control of the machine the client is running in. Version 3.22.0 contains a patch for this issue.\n\nSome post-fix advice is available. Do NOT use `Kryo5Codec` as deserialization codec, as it is still vulnerable to arbitrary object deserialization due to the `setRegistrationRequired(false)` call. On the contrary, `KryoCodec` is safe to use. The fix applied to `SerializationCodec` only consists of adding an optional allowlist of class names, even though making this behavior the default is recommended. When instantiating `SerializationCodec` please use the `SerializationCodec(ClassLoader classLoader, Set\u003cString\u003e allowedClasses)` constructor to restrict the allowed classes for deserialization.",
+          "Severity": "CRITICAL",
+          "CweIDs": [
+            "CWE-502"
+          ],
+          "VendorSeverity": {
+            "ghsa": 4,
+            "nvd": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+              "V3Score": 9.7
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+              "V3Score": 8.8
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+              "V3Score": 8.8
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2023-42809",
+            "https://github.com/redisson/redisson",
+            "https://github.com/redisson/redisson/commit/fe6a2571801656ff1599ef87bdee20f519a5d1fe",
+            "https://nvd.nist.gov/vuln/detail/CVE-2023-42809",
+            "https://securitylab.github.com/advisories/GHSL-2023-053_Redisson",
+            "https://securitylab.github.com/advisories/GHSL-2023-053_Redisson/",
+            "https://www.cve.org/CVERecord?id=CVE-2023-42809"
+          ],
+          "PublishedDate": "2023-10-04T20:15:10.263Z",
+          "LastModifiedDate": "2024-11-21T08:23:12.2Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2016-1000027",
+          "PkgName": "org.springframework:spring-web",
+          "PkgPath": "gdlife/gdstaff-backend-conference/app.jar/BOOT-INF/lib/spring-web-5.3.27.jar",
+          "PkgIdentifier": {
+            "PURL": "pkg:maven/org.springframework/spring-web@5.3.27",
+            "UID": "676f397451904fcf"
+          },
+          "InstalledVersion": "5.3.27",
+          "FixedVersion": "6.0.0",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:72fdf3f1dddf43b5a676cab4de987d0c52cae1371842e29eaa6fc6f5250d2157",
+            "DiffID": "sha256:a3d65c6b5d85aef820cc7b1d5bbdeddf6244d99d32dddd8ef1ebca664cfdd8af"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2016-1000027",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory Maven",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Amaven"
+          },
+          "Title": "spring: HttpInvokerServiceExporter readRemoteInvocation method untrusted java deserialization",
+          "Description": "Pivotal Spring Framework through 5.3.16 suffers from a potential remote code execution (RCE) issue if used for Java deserialization of untrusted data. Depending on how the library is implemented within a product, this issue may or not occur, and authentication may be required. NOTE: the vendor's position is that untrusted data is not an intended use case. The product's behavior will not be changed because some users rely on deserialization of trusted data.",
+          "Severity": "CRITICAL",
+          "CweIDs": [
+            "CWE-502"
+          ],
+          "VendorSeverity": {
+            "ghsa": 4,
+            "nvd": 4,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 9.8
+            },
+            "nvd": {
+              "V2Vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P",
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V2Score": 7.5,
+              "V3Score": 9.8
+            },
+            "redhat": {
+              "V2Vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P",
+              "V3Vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V2Score": 6.8,
+              "V3Score": 9.8
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2016-1000027",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2016-1000027",
+            "https://github.com/spring-projects/spring-framework",
+            "https://github.com/spring-projects/spring-framework/commit/2b051b8b321768a4cfef83077db65c6328ffd60f",
+            "https://github.com/spring-projects/spring-framework/commit/5cbe90b2cd91b866a5a9586e460f311860e11cfa",
+            "https://github.com/spring-projects/spring-framework/issues/21680",
+            "https://github.com/spring-projects/spring-framework/issues/24434",
+            "https://github.com/spring-projects/spring-framework/issues/24434#issuecomment-1231625331",
+            "https://github.com/spring-projects/spring-framework/issues/24434#issuecomment-579669626",
+            "https://github.com/spring-projects/spring-framework/issues/24434#issuecomment-582313417",
+            "https://github.com/spring-projects/spring-framework/issues/24434#issuecomment-744519525",
+            "https://jira.spring.io/browse/SPR-17143?redirect=false",
+            "https://nvd.nist.gov/vuln/detail/CVE-2016-1000027",
+            "https://raw.githubusercontent.com/distributedweaknessfiling/cvelist/master/2016/1000xxx/CVE-2016-1000027.json",
+            "https://security-tracker.debian.org/tracker/CVE-2016-1000027",
+            "https://security.netapp.com/advisory/ntap-20230420-0009",
+            "https://security.netapp.com/advisory/ntap-20230420-0009/",
+            "https://spring.io/blog/2022/05/11/spring-framework-5-3-20-and-5-2-22-available-now",
+            "https://support.contrastsecurity.com/hc/en-us/articles/4402400830612-Spring-web-Java-Deserialization-CVE-2016-1000027",
+            "https://www.cve.org/CVERecord?id=CVE-2016-1000027",
+            "https://www.tenable.com/security/research/tra-2016-20"
+          ],
+          "PublishedDate": "2020-01-02T23:15:11.857Z",
+          "LastModifiedDate": "2024-11-21T02:42:50.717Z"
+        }
+      ]
+    },
+    {
+      "Target": "usr/bin/swctl",
+      "Class": "lang-pkgs",
+      "Type": "gobinary",
+      "Vulnerabilities": [
+        {
+          "VulnerabilityID": "CVE-2021-4238",
+          "PkgID": "github.com/Masterminds/goutils@v1.1.0",
+          "PkgName": "github.com/Masterminds/goutils",
+          "PkgIdentifier": {
+            "PURL": "pkg:golang/github.com/masterminds/goutils@v1.1.0",
+            "UID": "14655d692adb9dcc"
+          },
+          "InstalledVersion": "v1.1.0",
+          "FixedVersion": "1.1.1",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:24915fc4037c81f6b08145aa2a0a0b90933cf385ff6a90373ab4db5eb964405c",
+            "DiffID": "sha256:1ce4dd7f28a041b362d115b4e204dd0c21d18b0674dfe2b7e1a519c86e938701"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2021-4238",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory Go",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Ago"
+          },
+          "Title": "goutils: RandomAlphaNumeric and CryptoRandomAlphaNumeric are not as random as they should be",
+          "Description": "Randomly-generated alphanumeric strings contain significantly less entropy than expected. The RandomAlphaNumeric and CryptoRandomAlphaNumeric functions always return strings containing at least one digit from 0 to 9. This significantly reduces the amount of entropy in short strings generated by these functions.",
+          "Severity": "CRITICAL",
+          "CweIDs": [
+            "CWE-331"
+          ],
+          "VendorSeverity": {
+            "azure": 4,
+            "ghsa": 4,
+            "nvd": 4,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
+              "V3Score": 9.1
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
+              "V3Score": 9.1
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:L",
+              "V3Score": 7
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2021-4238",
+            "https://github.com/Masterminds/goutils",
+            "https://github.com/Masterminds/goutils/commit/869801f20f9f1e7ecdbdb6422049d8241270d5e1",
+            "https://github.com/advisories/GHSA-3839-6r69-m497",
+            "https://nvd.nist.gov/vuln/detail/CVE-2021-4238",
+            "https://pkg.go.dev/vuln/GO-2022-0411",
+            "https://www.cve.org/CVERecord?id=CVE-2021-4238"
+          ],
+          "PublishedDate": "2022-12-27T22:15:12.073Z",
+          "LastModifiedDate": "2024-11-21T06:37:12.6Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2024-45337",
+          "PkgID": "golang.org/x/crypto@v0.0.0-20220411220226-7b82a4e95df4",
+          "PkgName": "golang.org/x/crypto",
+          "PkgIdentifier": {
+            "PURL": "pkg:golang/golang.org/x/crypto@v0.0.0-20220411220226-7b82a4e95df4",
+            "UID": "4c130702846488f5"
+          },
+          "InstalledVersion": "v0.0.0-20220411220226-7b82a4e95df4",
+          "FixedVersion": "0.31.0",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:24915fc4037c81f6b08145aa2a0a0b90933cf385ff6a90373ab4db5eb964405c",
+            "DiffID": "sha256:1ce4dd7f28a041b362d115b4e204dd0c21d18b0674dfe2b7e1a519c86e938701"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-45337",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory Go",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Ago"
+          },
+          "Title": "golang.org/x/crypto/ssh: Misuse of ServerConfig.PublicKeyCallback may cause authorization bypass in golang.org/x/crypto",
+          "Description": "Applications and libraries which misuse connection.serverAuthenticate (via callback field ServerConfig.PublicKeyCallback) may be susceptible to an authorization bypass. The documentation for ServerConfig.PublicKeyCallback says that \"A call to this function does not guarantee that the key offered is in fact used to authenticate.\" Specifically, the SSH protocol allows clients to inquire about whether a public key is acceptable before proving control of the corresponding private key. PublicKeyCallback may be called with multiple keys, and the order in which the keys were provided cannot be used to infer which key the client successfully authenticated with, if any. Some applications, which store the key(s) passed to PublicKeyCallback (or derived information) and make security relevant determinations based on it once the connection is established, may make incorrect assumptions. For example, an attacker may send public keys A and B, and then authenticate with A. PublicKeyCallback would be called only twice, first with A and then with B. A vulnerable application may then make authorization decisions based on key B for which the attacker does not actually control the private key. Since this API is widely misused, as a partial mitigation golang.org/x/cry...@v0.31.0 enforces the property that, when successfully authenticating via public key, the last key passed to ServerConfig.PublicKeyCallback will be the key used to authenticate the connection. PublicKeyCallback will now be called multiple times with the same key, if necessary. Note that the client may still not control the last key passed to PublicKeyCallback if the connection is then authenticated with a different method, such as PasswordCallback, KeyboardInteractiveCallback, or NoClientAuth. Users should be using the Extensions field of the Permissions return value from the various authentication callbacks to record data associated with the authentication attempt instead of referencing external state. Once the connection is established the state corresponding to the successful authentication attempt can be retrieved via the ServerConn.Permissions field. Note that some third-party libraries misuse the Permissions type by sharing it across authentication attempts; users of third-party libraries should refer to the relevant projects for guidance.",
+          "Severity": "CRITICAL",
+          "VendorSeverity": {
+            "amazon": 3,
+            "azure": 4,
+            "cbl-mariner": 4,
+            "ghsa": 4,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+              "V3Score": 9.1
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:N",
+              "V3Score": 8.2
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2024/12/11/2",
+            "https://access.redhat.com/security/cve/CVE-2024-45337",
+            "https://github.com/golang/crypto",
+            "https://github.com/golang/crypto/commit/b4f1988a35dee11ec3e05d6bf3e90b695fbd8909",
+            "https://go.dev/cl/635315",
+            "https://go.dev/issue/70779",
+            "https://groups.google.com/g/golang-announce/c/-nPEi39gI4Q/m/cGVPJCqdAQAJ",
+            "https://nvd.nist.gov/vuln/detail/CVE-2024-45337",
+            "https://pkg.go.dev/vuln/GO-2024-3321",
+            "https://security.netapp.com/advisory/ntap-20250131-0007",
+            "https://security.netapp.com/advisory/ntap-20250131-0007/",
+            "https://www.cve.org/CVERecord?id=CVE-2024-45337"
+          ],
+          "PublishedDate": "2024-12-12T02:02:07.97Z",
+          "LastModifiedDate": "2025-02-18T21:15:22.187Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2023-24538",
+          "PkgID": "stdlib@v1.18.10",
+          "PkgName": "stdlib",
+          "PkgIdentifier": {
+            "PURL": "pkg:golang/stdlib@v1.18.10",
+            "UID": "c1bbe3eaa6bdc318"
+          },
+          "InstalledVersion": "v1.18.10",
+          "FixedVersion": "1.19.8, 1.20.3",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:24915fc4037c81f6b08145aa2a0a0b90933cf385ff6a90373ab4db5eb964405c",
+            "DiffID": "sha256:1ce4dd7f28a041b362d115b4e204dd0c21d18b0674dfe2b7e1a519c86e938701"
+          },
+          "SeveritySource": "nvd",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-24538",
+          "DataSource": {
+            "ID": "govulndb",
+            "Name": "The Go Vulnerability Database",
+            "URL": "https://pkg.go.dev/vuln/"
+          },
+          "Title": "golang: html/template: backticks not treated as string delimiters",
+          "Description": "Templates do not properly consider backticks (`) as Javascript string delimiters, and do not escape them as expected. Backticks are used, since ES6, for JS template literals. If a template contains a Go template action within a Javascript template literal, the contents of the action can be used to terminate the literal, injecting arbitrary Javascript code into the Go template. As ES6 template literals are rather complex, and themselves can do string interpolation, the decision was made to simply disallow Go template actions from being used inside of them (e.g. \"var a = {{.}}\"), since there is no obviously safe way to allow this behavior. This takes the same approach as github.com/google/safehtml. With fix, Template.Parse returns an Error when it encounters templates like this, with an ErrorCode of value 12. This ErrorCode is currently unexported, but will be exported in the release of Go 1.21. Users who rely on the previous behavior can re-enable it using the GODEBUG flag jstmpllitinterp=1, with the caveat that backticks will now be escaped. This should be used with caution.",
+          "Severity": "CRITICAL",
+          "CweIDs": [
+            "CWE-94"
+          ],
+          "VendorSeverity": {
+            "alma": 2,
+            "amazon": 3,
+            "azure": 4,
+            "bitnami": 4,
+            "cbl-mariner": 4,
+            "nvd": 4,
+            "oracle-oval": 2,
+            "photon": 4,
+            "redhat": 2,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "bitnami": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 9.8
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 9.8
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 9.8
+            }
+          },
+          "References": [
+            "https://access.redhat.com/errata/RHSA-2023:6939",
+            "https://access.redhat.com/security/cve/CVE-2023-24538",
+            "https://bugzilla.redhat.com/2163037",
+            "https://bugzilla.redhat.com/2174485",
+            "https://bugzilla.redhat.com/2175721",
+            "https://bugzilla.redhat.com/2178358",
+            "https://bugzilla.redhat.com/2178488",
+            "https://bugzilla.redhat.com/2178492",
+            "https://bugzilla.redhat.com/2182883",
+            "https://bugzilla.redhat.com/2182884",
+            "https://bugzilla.redhat.com/2184481",
+            "https://bugzilla.redhat.com/2184482",
+            "https://bugzilla.redhat.com/2184483",
+            "https://bugzilla.redhat.com/2184484",
+            "https://bugzilla.redhat.com/2196026",
+            "https://bugzilla.redhat.com/2196027",
+            "https://bugzilla.redhat.com/2196029",
+            "https://bugzilla.redhat.com/2222167",
+            "https://bugzilla.redhat.com/2228689",
+            "https://errata.almalinux.org/8/ALSA-2023-6939.html",
+            "https://github.com/golang/go/commit/20374d1d759bc4e17486bde1cb9dca5be37d9e52 (go1.20.3)",
+            "https://github.com/golang/go/commit/b1e3ecfa06b67014429a197ec5e134ce4303ad9b (go1.19.8)",
+            "https://github.com/golang/go/issues/59234",
+            "https://go.dev/cl/482079",
+            "https://go.dev/issue/59234",
+            "https://groups.google.com/g/golang-announce/c/Xdv6JL9ENs8",
+            "https://linux.oracle.com/cve/CVE-2023-24538.html",
+            "https://linux.oracle.com/errata/ELSA-2023-6939.html",
+            "https://nvd.nist.gov/vuln/detail/CVE-2023-24538",
+            "https://pkg.go.dev/vuln/GO-2023-1703",
+            "https://security.gentoo.org/glsa/202311-09",
+            "https://security.netapp.com/advisory/ntap-20241115-0007/",
+            "https://ubuntu.com/security/notices/USN-6038-1",
+            "https://ubuntu.com/security/notices/USN-6038-2",
+            "https://ubuntu.com/security/notices/USN-6140-1",
+            "https://ubuntu.com/security/notices/USN-7061-1",
+            "https://www.cve.org/CVERecord?id=CVE-2023-24538"
+          ],
+          "PublishedDate": "2023-04-06T16:15:07.8Z",
+          "LastModifiedDate": "2025-02-12T17:15:14.19Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2023-24540",
+          "PkgID": "stdlib@v1.18.10",
+          "PkgName": "stdlib",
+          "PkgIdentifier": {
+            "PURL": "pkg:golang/stdlib@v1.18.10",
+            "UID": "c1bbe3eaa6bdc318"
+          },
+          "InstalledVersion": "v1.18.10",
+          "FixedVersion": "1.19.9, 1.20.4",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:24915fc4037c81f6b08145aa2a0a0b90933cf385ff6a90373ab4db5eb964405c",
+            "DiffID": "sha256:1ce4dd7f28a041b362d115b4e204dd0c21d18b0674dfe2b7e1a519c86e938701"
+          },
+          "SeveritySource": "nvd",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-24540",
+          "DataSource": {
+            "ID": "govulndb",
+            "Name": "The Go Vulnerability Database",
+            "URL": "https://pkg.go.dev/vuln/"
+          },
+          "Title": "golang: html/template: improper handling of JavaScript whitespace",
+          "Description": "Not all valid JavaScript whitespace characters are considered to be whitespace. Templates containing whitespace characters outside of the character set \"\\t\\n\\f\\r\\u0020\\u2028\\u2029\" in JavaScript contexts that also contain actions may not be properly sanitized during execution.",
+          "Severity": "CRITICAL",
+          "CweIDs": [
+            "CWE-77"
+          ],
+          "VendorSeverity": {
+            "alma": 2,
+            "amazon": 3,
+            "bitnami": 4,
+            "cbl-mariner": 4,
+            "nvd": 4,
+            "oracle-oval": 2,
+            "photon": 4,
+            "redhat": 3,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "bitnami": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 9.8
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 9.8
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 8.1
+            }
+          },
+          "References": [
+            "https://access.redhat.com/errata/RHSA-2023:6939",
+            "https://access.redhat.com/security/cve/CVE-2023-24540",
+            "https://bugzilla.redhat.com/2163037",
+            "https://bugzilla.redhat.com/2174485",
+            "https://bugzilla.redhat.com/2175721",
+            "https://bugzilla.redhat.com/2178358",
+            "https://bugzilla.redhat.com/2178488",
+            "https://bugzilla.redhat.com/2178492",
+            "https://bugzilla.redhat.com/2182883",
+            "https://bugzilla.redhat.com/2182884",
+            "https://bugzilla.redhat.com/2184481",
+            "https://bugzilla.redhat.com/2184482",
+            "https://bugzilla.redhat.com/2184483",
+            "https://bugzilla.redhat.com/2184484",
+            "https://bugzilla.redhat.com/2196026",
+            "https://bugzilla.redhat.com/2196027",
+            "https://bugzilla.redhat.com/2196029",
+            "https://bugzilla.redhat.com/2222167",
+            "https://bugzilla.redhat.com/2228689",
+            "https://errata.almalinux.org/8/ALSA-2023-6939.html",
+            "https://github.com/golang/go/commit/4a28cad66655ee01c6e944271e23c33cab021765 (go1.20.4)",
+            "https://github.com/golang/go/commit/ce7bd33345416e6d8cac901792060591cafc2797 (go1.19.9)",
+            "https://github.com/golang/go/issues/59721",
+            "https://go.dev/cl/491616",
+            "https://go.dev/issue/59721",
+            "https://groups.google.com/g/golang-announce/c/MEb0UyuSMsU",
+            "https://linux.oracle.com/cve/CVE-2023-24540.html",
+            "https://linux.oracle.com/errata/ELSA-2023-6939.html",
+            "https://nvd.nist.gov/vuln/detail/CVE-2023-24540",
+            "https://pkg.go.dev/vuln/GO-2023-1752",
+            "https://security.netapp.com/advisory/ntap-20241115-0008/",
+            "https://ubuntu.com/security/notices/USN-6140-1",
+            "https://www.cve.org/CVERecord?id=CVE-2023-24540"
+          ],
+          "PublishedDate": "2023-05-11T16:15:09.687Z",
+          "LastModifiedDate": "2025-01-24T17:15:10.893Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2024-24790",
+          "PkgID": "stdlib@v1.18.10",
+          "PkgName": "stdlib",
+          "PkgIdentifier": {
+            "PURL": "pkg:golang/stdlib@v1.18.10",
+            "UID": "c1bbe3eaa6bdc318"
+          },
+          "InstalledVersion": "v1.18.10",
+          "FixedVersion": "1.21.11, 1.22.4",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:24915fc4037c81f6b08145aa2a0a0b90933cf385ff6a90373ab4db5eb964405c",
+            "DiffID": "sha256:1ce4dd7f28a041b362d115b4e204dd0c21d18b0674dfe2b7e1a519c86e938701"
+          },
+          "SeveritySource": "nvd",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-24790",
+          "DataSource": {
+            "ID": "govulndb",
+            "Name": "The Go Vulnerability Database",
+            "URL": "https://pkg.go.dev/vuln/"
+          },
+          "Title": "golang: net/netip: Unexpected behavior from Is methods for IPv4-mapped IPv6 addresses",
+          "Description": "The various Is methods (IsPrivate, IsLoopback, etc) did not work as expected for IPv4-mapped IPv6 addresses, returning false for addresses which would return true in their traditional IPv4 forms.",
+          "Severity": "CRITICAL",
+          "VendorSeverity": {
+            "alma": 2,
+            "amazon": 2,
+            "bitnami": 4,
+            "cbl-mariner": 4,
+            "nvd": 4,
+            "oracle-oval": 2,
+            "photon": 4,
+            "redhat": 2,
+            "rocky": 2,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "bitnami": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 9.8
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 9.8
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+              "V3Score": 6.7
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2024/06/04/1",
+            "https://access.redhat.com/errata/RHSA-2024:5291",
+            "https://access.redhat.com/security/cve/CVE-2024-24790",
+            "https://bugzilla.redhat.com/2279814",
+            "https://bugzilla.redhat.com/2292668",
+            "https://bugzilla.redhat.com/2292787",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2292668",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2292787",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-24789",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-24790",
+            "https://errata.almalinux.org/8/ALSA-2024-5291.html",
+            "https://errata.rockylinux.org/RLSA-2024:4212",
+            "https://github.com/golang/go/commit/051bdf3fd12a40307606ff9381138039c5f452f0 (1.21)",
+            "https://github.com/golang/go/commit/12d5810cdb1f73cf23d7a86462143e9463317fca (1.22)",
+            "https://github.com/golang/go/issues/67680",
+            "https://go.dev/cl/590316",
+            "https://go.dev/issue/67680",
+            "https://groups.google.com/g/golang-announce/c/XbxouI9gY7k",
+            "https://groups.google.com/g/golang-announce/c/XbxouI9gY7k/m/TuoGEhxIEwAJ",
+            "https://linux.oracle.com/cve/CVE-2024-24790.html",
+            "https://linux.oracle.com/errata/ELSA-2025-31356.html",
+            "https://nvd.nist.gov/vuln/detail/CVE-2024-24790",
+            "https://pkg.go.dev/vuln/GO-2024-2887",
+            "https://security.netapp.com/advisory/ntap-20240905-0002/",
+            "https://ubuntu.com/security/notices/USN-6886-1",
+            "https://ubuntu.com/security/notices/USN-7109-1",
+            "https://www.cve.org/CVERecord?id=CVE-2024-24790"
+          ],
+          "PublishedDate": "2024-06-05T16:15:10.56Z",
+          "LastModifiedDate": "2024-11-21T08:59:42.813Z"
+        }
+      ]
+    }
+  ]
+}

@@ -4,6 +4,7 @@ import (
 	"basic/cloud/acs"
 	"basic/util"
 	"encoding/json"
+	"fmt"
 	"github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 	"log"
 )
@@ -15,7 +16,7 @@ func ListTagByRepo(repo util.Repository) []util.Tag {
 	request.ApiName = "ListRepoTag"
 	request.QueryParams["InstanceId"] = "cri-private"
 	request.QueryParams["RepoId"] = repo.Id
-	request.QueryParams["PageSize"] = "150"
+	request.QueryParams["PageSize"] = "5"
 	request.SetContentType(requests.Form)
 
 	response, err := acs.Client.ProcessCommonRequest(request)
@@ -26,6 +27,7 @@ func ListTagByRepo(repo util.Repository) []util.Tag {
 	var data struct {
 		Tags []util.Tag `json:"Images"`
 	}
+	fmt.Println(response.GetHttpContentString())
 	err = json.Unmarshal([]byte(response.GetHttpContentString()), &data)
 	if err != nil {
 		log.Println(err.Error())

@@ -17,6 +17,7 @@ import (
 	"path/filepath"
 	"reflect"
 	"strings"
+	"time"
 )
 
 type Data struct {
@@ -181,13 +182,14 @@ func isExcluded(ns string) bool {
 	return false
 }
 
-func image_check(file string) {
+func image_check(file, base string) {
 	for _, ns := range ListAllNamespaces(file) {
-		os.Mkdir("image_check/"+filepath.Base(file), 0755)
-		os.Mkdir("image_check/"+filepath.Base(file)+"/"+ns.Namespace, 0755)
+		os.Mkdir(base+"/"+filepath.Base(file), 0755)
+		os.Mkdir(base+"/"+filepath.Base(file)+"/"+ns.Namespace, 0755)
+		nsbase := base + "/" + filepath.Base(file) + "/" + ns.Namespace
 		for _, image := range ListAllImages(ListAllPods(ns)) {
-			cmd1 := "trivy image --skip-db-update --skip-java-db-update  " + image + " --severity=CRITICAL  --report=summary --insecure --format template --template \"@/data/.cache/trivy/html.tpl\" --output image_check/" + filepath.Base(file) + "/" + ns.Namespace + "/" + filepath.Base(image) + ".html --timeout 3m -q --cache-dir /data/.cache/trivy"
-			cmd2 := "trivy image --skip-db-update --skip-java-db-update  " + image + " --severity=CRITICAL  --report=summary --insecure --format json --output image_check/" + filepath.Base(file) + "/" + ns.Namespace + "/" + filepath.Base(image) + ".json --timeout 3m -q --cache-dir /data/.cache/trivy"
+			cmd1 := "trivy image --skip-db-update --skip-java-db-update  " + image + " --severity=CRITICAL  --report=summary --insecure --format template --template \"@/data/.cache/trivy/html.tpl\" --output " + nsbase + "/" + filepath.Base(image) + ".html --timeout 3m -q --cache-dir /data/.cache/trivy"
+			cmd2 := "trivy image --skip-db-update --skip-java-db-update  " + image + " --severity=CRITICAL  --report=summary --insecure --format json --output " + nsbase + "/" + filepath.Base(image) + ".json --timeout 3m -q --cache-dir /data/.cache/trivy"
 			switch {
 			case strings.HasPrefix(image, "cr-ee"):
 				ExecuteComplexCmd(cmd1)
@@ -219,7 +221,7 @@ func isPrivilieged(pod v1.Pod) bool {
 	return false
 }
 
-func pod_check(path string) {
+func pod_check(path, base string) {
 	var result = make(map[string]Data)
 	namespaces := ListAllNamespaces(path)
 	for _, ns := range namespaces {
@@ -250,7 +252,7 @@ func pod_check(path string) {
 			// 更准确地检查hostPath卷
 			for _, volume := range pod.Spec.Volumes {
 				if volume.HostPath != nil {
-					if volume.HostPath.Path == "/etc/localtime" {
+					if volume.HostPath.Path == "/etc/localtime" || strings.Contains(volume.HostPath.Path, "/data") || strings.Contains(volume.HostPath.Path, "/home") {
 						continue
 					}
 					// 找到使用hostPath卷的容器
@@ -288,24 +290,43 @@ func pod_check(path string) {
 
 		res := make([]Data, 0)
 		for _, value := range result {
+			count.HostPaths += len(value.HostPaths)
+			count.Sysctls += len(value.Sysctls)
+			count.Privileged += boolToInt(value.Privileged)
 			res = append(res, value)
 		}
 		if len(res) == 0 {
 			continue
 		}
-		os.Mkdir("pod_check/"+filepath.Base(path), 0755)
-		WriteSliceToFile(res, "pod_check/"+filepath.Base(path)+"/"+ns.Namespace+".res")
+		os.Mkdir(base+"/"+filepath.Base(path), 0755)
+		WriteSliceToFile(res, base+"/"+filepath.Base(path)+"/"+ns.Namespace+".opa")
 	}
 }
+
+type Count struct {
+	Privileged int
+	HostPaths  int
+	Sysctls    int
+}
+
+var count Count
 
 func main() {
 	util.Init()
 	files, _ := ListAllFiles(util.Config.MP["path"])
 	pretty.Println(files)
-	os.Mkdir("pod_check", 0755)
-	os.Mkdir("image_check", 0755)
+	os.Mkdir("pod_check_"+time.Now().Format("2006-01-02"), 0755)
+	os.Mkdir("image_check_"+time.Now().Format("2006-01-02"), 0755)
 	for _, file := range files {
-		//image_check(file)
-		pod_check(file)
+		image_check(file, "image_check_"+time.Now().Format("2006-01-02"))
+		pod_check(file, "pod_check_"+time.Now().Format("2006-01-02"))
 	}
+	pretty.Println(count)
+}
+
+func boolToInt(b bool) int {
+	if b {
+		return 1
+	}
+	return 0
 }

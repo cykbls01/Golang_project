@@ -52,6 +52,8 @@ func main() {
 			}
 		}
 		util.WriteRepo(repoList, util.Config.MP)
+	case "test":
+		fmt.Println(acr.ListTagByRepo(util.Repository{Name: "ezc", Namespace: "ezc", Id: "crr-oen7ow6qe4ay520f"}))
 	default:
 		fmt.Printf("Error: unknown method '%s' (should not happen with default)\n", util.Config.Method)
 		flag.Usage()
