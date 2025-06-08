@@ -1,4 +1,4 @@
-package main
+package cks
 
 import (
 	"basic/excel"
@@ -36,8 +36,18 @@ type JSONData struct {
 	ArtifactName string   `json:"ArtifactName"`
 }
 
+func isExcluded(ns string) bool {
+	excludeList := []string{"kube-system", "arms-prom", "falco", "kube-node-lease", "kube-public", "istio-system"}
+	for _, excluded := range excludeList {
+		if excluded == ns {
+			return true
+		}
+	}
+	return false
+}
+
 // 递归处理目录的主函数
-func ProcessJSONFiles(root string) ([]Result, error) {
+func ProcessJSONFiles(root, output string) ([]Result, error) {
 	var allResults []Result
 	var allData []Vulnerability
 	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
@@ -64,7 +74,7 @@ func ProcessJSONFiles(root string) ([]Result, error) {
 		}
 		return nil
 	})
-	fmt.Println(excel.Output(allData, root+"/result.xlsx"))
+	fmt.Println(excel.Output(allData, output))
 	return allResults, err
 }
 
@@ -89,7 +99,7 @@ func main() {
 	targetDir := filepath.Join(currentDir, os.Args[1])
 
 	// 执行解析
-	results, err := ProcessJSONFiles(targetDir)
+	results, err := ProcessJSONFiles(targetDir, targetDir+"/result.xlsx")
 	if err != nil {
 		fmt.Printf("处理过程中发生错误: %v\n", err)
 		return
