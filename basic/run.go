@@ -1,8 +1,7 @@
 package main
 
 import (
-	"basic/processor"
-	cks2 "basic/processor/cks"
+	processor1 "basic/processor"
 	"basic/util"
 	_ "basic/util/k8s"
 	"encoding/json"
@@ -61,15 +60,20 @@ func main() {
 	util.Init()
 	files, _ := ListAllFiles(util.Config.MP["path"])
 	pretty.Println(files)
-	var processor processor.Processor
+	var processor processor1.Processor
+
 	switch util.Config.Method {
 	case "image_check":
 		{
-			processor = &cks2.ImageCheck{Files: files, Path: "image_check"}
+			processor = &processor1.ImageCheck{Files: files, Path: "image_check"}
 		}
 	case "pod_check":
 		{
-			processor = &cks2.PodCheck{Files: files, Path: "pod_check", Result: make([]cks2.Data, 0)}
+			processor = &processor1.PodCheck{Files: files, Path: "pod_check", Result: make([]processor1.Data, 0)}
+		}
+	case "image_sync":
+		{
+			processor = &processor1.ImageSync{}
 		}
 	default:
 		pretty.Println("未知方法")

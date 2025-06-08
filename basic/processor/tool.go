@@ -1,13 +1,11 @@
-package cks
+package processor
 
 import (
-	"basic/excel"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"strconv"
 	"strings"
 )
 
@@ -47,8 +45,8 @@ func isExcluded(ns string) bool {
 }
 
 // 递归处理目录的主函数
-func ProcessJSONFiles(root, output string) ([]Result, error) {
-	var allResults []Result
+func ProcessJSONFiles(root string) []Vulnerability {
+	//var allResults []Result
 	var allData []Vulnerability
 	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
@@ -61,7 +59,7 @@ func ProcessJSONFiles(root, output string) ([]Result, error) {
 			if err != nil {
 				return fmt.Errorf("解析文件失败 %q: %v", path, err)
 			}
-			allResults = append(allResults, data.Result...)
+			//allResults = append(allResults, data.Result...)
 			for _, v := range data.Result {
 				for _, u := range v.Vulnerability {
 					u.VulnerabilityType = v.VulnerabilityType
@@ -74,8 +72,11 @@ func ProcessJSONFiles(root, output string) ([]Result, error) {
 		}
 		return nil
 	})
-	fmt.Println(excel.Output(allData, output))
-	return allResults, err
+	if err != nil {
+		fmt.Println(err)
+	}
+	//fmt.Println(excel.Output(allData, output))
+	return allData
 }
 
 // 解析单个JSON文件
@@ -91,56 +92,4 @@ func parseJSONFile(path string) (JSONData, error) {
 	}
 
 	return jsonData, nil
-}
-
-func main() {
-	// 获取当前工作目录
-	currentDir, _ := os.Getwd()
-	targetDir := filepath.Join(currentDir, os.Args[1])
-
-	// 执行解析
-	results, err := ProcessJSONFiles(targetDir, targetDir+"/result.xlsx")
-	if err != nil {
-		fmt.Printf("处理过程中发生错误: %v\n", err)
-		return
-	}
-
-	vul := make([]Vulnerability, 0)
-	for _, v := range results {
-		for _, u := range v.Vulnerability {
-			u.VulnerabilityType = v.VulnerabilityType
-			vul = append(vul, u)
-		}
-	}
-
-	typeMap := map[string]int{}
-	idMap := map[string]int{}
-	vulMap := make(map[string]Vulnerability)
-
-	for _, v := range vul {
-		typeMap[v.VulnerabilityType]++
-		idMap[v.Id]++
-		vulMap[v.Id] = v
-	}
-
-	fmt.Println("漏洞总数: " + strconv.Itoa(len(vul)))
-	fmt.Println("漏洞总数分布: ")
-	for k, v := range typeMap {
-		fmt.Print(k)
-		fmt.Print(" : ")
-		fmt.Println(v)
-	}
-
-	typeMap = map[string]int{}
-	for k, _ := range idMap {
-		typeMap[vulMap[k].VulnerabilityType]++
-	}
-	fmt.Println("漏洞种类: " + strconv.Itoa(len(idMap)))
-	fmt.Println("漏洞种类分布: ")
-	for k, v := range typeMap {
-		fmt.Print(k)
-		fmt.Print(" : ")
-		fmt.Println(v)
-	}
-
 }

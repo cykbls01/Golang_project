@@ -1,6 +1,7 @@
-package cks
+package processor
 
 import (
+	"basic/excel"
 	"basic/util"
 	"basic/util/k8s"
 	"bytes"
@@ -31,12 +32,10 @@ func (ic *ImageCheck) Process() {
 
 func (ic *ImageCheck) Post() {
 	pretty.Println(ic.Error)
-	ProcessJSONFiles(ic.Path, ic.Path+"/result.xlsx")
+	excel.Output(ProcessJSONFiles(ic.Path), ic.Path+"/result.xlsx")
 }
 
 func ExecuteComplexCmd(cmdStr string) (string, string, error) {
-	// 获取当前工作目录[4](@ref)
-	//fmt.Println(cmdStr)
 	currentDir, err := os.Getwd()
 	if err != nil {
 		return "", "", fmt.Errorf("获取目录失败: %v", err)
