@@ -1,0 +1,75 @@
+acs-zonghefuwu:
+  platform: acs
+  ak: 0Q85TFcL80UmWGIO
+  sk: UXRGpGUuXogrVBRbvsJTajyP9wopED
+  organizationid: 79
+  resourcegroupid: 134
+  instanceid: cri-private
+  regionid: cn-beijing-acs-bj3
+  filter: dctms|mail|mingdaoyun
+  endpoint: cr-ee.cn-beijing-acs-bj3.res.acs-cloud.clic
+  registry: cr-ee.registry.cn-beijing-acs-bj3.res.acs-cloud.clic
+acs-shuzihuapingtai:
+  platform: acs
+  ak: 0Q85TFcL80UmWGIO
+  sk: UXRGpGUuXogrVBRbvsJTajyP9wopED
+  regionid: cn-beijing-acs-bj1
+  instanceid: cri-private
+  organizationid: 72
+  resourcegroupid: 97
+  filter: ezc|dap|cls|cram|airobot|myteam|ds|ccp|llmp|cfs-bj
+  endpoint: cr-ee.cn-beijing-acs-bj1.res.acs-cloud.clic
+  registry: cr-ee.registry.cn-beijing-acs-bj1.res.acs-cloud.clic
+acs-jichuyunwei:
+  platform: acs
+  ak: 0Q85TFcL80UmWGIO
+  sk: UXRGpGUuXogrVBRbvsJTajyP9wopED
+  organizationid: 81
+  resourcegroupid: 139
+  instanceid: cri-private
+  regionid: cn-beijing-acs-bj3
+  filter: lms|cm
+  endpoint: cr-ee.cn-beijing-acs-bj3.res.acs-cloud.clic
+  registry: cr-ee.registry.cn-beijing-acs-bj3.res.acs-cloud.clic
+acs-guangdong:
+  platform: acs
+  ak: 0Q85TFcL80UmWGIO
+  sk: UXRGpGUuXogrVBRbvsJTajyP9wopED
+  organizationid: 87
+  resourcegroupid: 165
+  instanceid: cri-private
+  regionid: cn-beijing-acs-bj3
+  filter: cloud-guangdong
+  endpoint: cr-ee.cn-beijing-acs-bj3.res.acs-cloud.clic
+  registry: cr-ee.registry.cn-beijing-acs-bj3.res.acs-cloud.clic
+hcs-r4:
+  platform: hcs
+  ak: JIT5DJYXBVGK4FWQUODG
+  sk: vaWta1Yus29gfT0C1Gh3Eh39oV9PXFs5VUl4fych
+  regionid: r4
+  registry: swr.bj-kjy-12.cloud.clic
+  endpoint: swr-api.bj-kjy-12.cloud.clic
+hcs-r5:
+  platform: hcs
+  ak: JIT5DJYXBVGK4FWQUODG
+  sk: vaWta1Yus29gfT0C1Gh3Eh39oV9PXFs5VUl4fych
+  regionid: r5
+  registry: swr.bj-kjy-50.cloud.clic
+  endpoint: swr-api.bj-kjy-50.cloud.clic
+  filter: ezc|dap|cls|cram|airobot|myteam|ds|ccp|llmp|cfs-bj
+hcs-r7:
+  platform: hcs
+  ak: JIT5DJYXBVGK4FWQUODG
+  sk: vaWta1Yus29gfT0C1Gh3Eh39oV9PXFs5VUl4fych
+  regionid: r7
+  registry: swr.sh-ky-70.cloud.clic
+  endpoint: swr-api.sh-ky-70.cloud.clic
+  filter: ezc|dap|cls|cram|airobot|myteam|ds|ccp|llmp|cfs-bj
+hcs-r9:
+  platform: hcs
+  ak: JIT5DJYXBVGK4FWQUODG
+  sk: vaWta1Yus29gfT0C1Gh3Eh39oV9PXFs5VUl4fych
+  regionid: r9
+  registry: swr.bj-kjy-90.cloud.clic
+  endpoint: swr-api.bj-kjy-90.cloud.clic
+  filter: ezc|dap|cls|cram|airobot|myteam|ds|ccp|llmp|cfs-bj

@@ -8,6 +8,7 @@ require (
 	github.com/aliyun/alibaba-cloud-sdk-go v1.63.8
 	github.com/huaweicloud/huaweicloud-sdk-go-v3 v0.1.111
 	github.com/kr/pretty v0.3.1
+	github.com/tealeg/xlsx v1.0.5
 	github.com/xuri/excelize/v2 v2.9.0
 	gopkg.in/yaml.v3 v3.0.1
 	k8s.io/api v0.32.3

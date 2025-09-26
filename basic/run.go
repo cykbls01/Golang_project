@@ -11,6 +11,7 @@ import (
 	"os"
 	"path/filepath"
 	"reflect"
+	"strings"
 )
 
 func ListAllFiles(dirPath string) ([]string, error) {
@@ -58,23 +59,35 @@ var count Count
 
 func main() {
 	util.Init()
-	files, _ := ListAllFiles(util.Config.MP["path"])
-	pretty.Println(files)
 	var processor processor1.Processor
-
 	switch util.Config.Method {
 	case "image_check":
 		{
+			files, _ := ListAllFiles(util.Config.MP["path"])
 			processor = &processor1.ImageCheck{Files: files, Path: "image_check"}
 		}
 	case "pod_check":
 		{
+			files, _ := ListAllFiles(util.Config.MP["path"])
 			processor = &processor1.PodCheck{Files: files, Path: "pod_check", Result: make([]processor1.Data, 0)}
 		}
 	case "image_sync":
 		{
-			processor = &processor1.ImageSync{}
+			os.Create("images.yaml")
+			for _, v := range strings.Split(util.Config.MP["kv"], "|") {
+				source := strings.Split(v, ":")[0]
+				target := strings.Split(v, ":")[1]
+				processor = &processor1.ImageSync{Source: util.Config.Regions[source], Target: util.Config.Regions[target]}
+				processor.Pre()
+				processor.Process()
+				processor.Post()
+			}
+			return
 		}
+	//case "image_transfer":
+	//	{
+	//		processor = &processor1.ImageTransfer{}
+	//	}
 	default:
 		pretty.Println("未知方法")
 		os.Exit(1)
