@@ -8,6 +8,7 @@ import (
 	"github.com/kr/pretty"
 	_ "github.com/kr/pretty"
 	_ "k8s.io/api/core/v1"
+	"log"
 	"os"
 	"path/filepath"
 	"reflect"
@@ -75,6 +76,7 @@ func main() {
 		{
 			os.Create("images.yaml")
 			for _, v := range strings.Split(util.Config.MP["kv"], "|") {
+				log.Println(v)
 				source := strings.Split(v, ":")[0]
 				target := strings.Split(v, ":")[1]
 				processor = &processor1.ImageSync{Source: util.Config.Regions[source], Target: util.Config.Regions[target]}

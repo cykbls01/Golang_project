@@ -28,7 +28,8 @@ func (is *ImageSync) Process() {
 	case "hcs":
 		{
 			tags := make([]util.Tag, 0)
-			for _, namespace := range strings.Split(is.Source.Filter, "|") {
+			for _, namespace := range strings.Split(is.Target.Filter, "|") {
+				log.Println(namespace)
 				swrRepos, err := is.hcsClinet.ListRepoByNamespace(namespace)
 				if err != nil {
 					log.Println(err)
@@ -50,7 +51,7 @@ func (is *ImageSync) Process() {
 				link2 := "/" + v.Namespace + "/" + v.Repo + ":" + first
 				var line string
 				if ((second == "r5" || second == "beijing") && is.Target.RegionID == "r5") || ((second == "r7" || second == "shanghai") && is.Target.RegionID == "r7") || (second == "r9" && is.Target.RegionID == "r9") || (second == "both" && (is.Target.RegionID == "r5" || is.Target.RegionID == "r7")) {
-					line = is.Source.Endpoint + link1 + ": " + is.Target.Endpoint + link2
+					line = is.Source.Registry + link1 + ": " + is.Target.Registry + link2
 				} else {
 					continue
 				}

@@ -56,7 +56,7 @@ hcs-r5:
   regionid: r5
   registry: swr.bj-kjy-50.cloud.clic
   endpoint: swr-api.bj-kjy-50.cloud.clic
-  filter: ezc|dap|cls|cram|airobot|myteam|ds|ccp|llmp|cfs-bj
+  filter: cloud-hebei-prd|cloud-shandong|gaia|cloud-guangdong|cloud-gansu|ezc|dap|mail|dctms|xj-projects|ecc-operation|llmp|imcloud|chcp|ccp|cram|dmp|tcs|sparty|mail|henanlife|cloud-sichuan
 hcs-r7:
   platform: hcs
   ak: JIT5DJYXBVGK4FWQUODG
@@ -64,7 +64,7 @@ hcs-r7:
   regionid: r7
   registry: swr.sh-ky-70.cloud.clic
   endpoint: swr-api.sh-ky-70.cloud.clic
-  filter: ezc|dap|cls|cram|airobot|myteam|ds|ccp|llmp|cfs-bj
+  filter: shenzhen|ezc|gaia|llmp|dmp|cloud-shandong|goldcust|dataphin-k8s|logstash|tcs
 hcs-r9:
   platform: hcs
   ak: JIT5DJYXBVGK4FWQUODG
@@ -72,4 +72,4 @@ hcs-r9:
   regionid: r9
   registry: swr.bj-kjy-90.cloud.clic
   endpoint: swr-api.bj-kjy-90.cloud.clic
-  filter: ezc|dap|cls|cram|airobot|myteam|ds|ccp|llmp|cfs-bj
+  filter: datawb|chcp|imcloud
