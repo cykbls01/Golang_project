@@ -10,7 +10,6 @@ import (
 	metricsv1beta1 "k8s.io/metrics/pkg/apis/metrics/v1beta1"
 	"k8s.io/metrics/pkg/client/clientset/versioned"
 	"math"
-	"os"
 	"sort"
 )
 
@@ -30,34 +29,23 @@ type PodResourceUsage struct {
 	StartTime    metav1.Time
 }
 
-func Get() {
-	// 1. 加载K8s配置
-	kubeconfig := clientcmd.RecommendedHomeFile
-	if envvar := os.Getenv("KUBECONFIG"); envvar != "" {
-		kubeconfig = envvar
-	}
-
-	// 构建K8s核心客户端配置
-	config, err := clientcmd.BuildConfigFromFlags("", kubeconfig)
+func Get(filepath, namespace string) {
+	config, err := clientcmd.BuildConfigFromFlags("", filepath)
 	if err != nil {
 		panic(fmt.Sprintf("加载K8s配置失败: %v", err))
 	}
 
-	// 2. 创建客户端
-	// 核心客户端（用于获取Pod基本信息）
 	coreClientset, err := kubernetes.NewForConfig(config)
 	if err != nil {
 		panic(fmt.Sprintf("创建核心客户端失败: %v", err))
 	}
 
-	// Metrics客户端（用于获取Pod资源使用数据）
 	metricsClientset, err := versioned.NewForConfig(config)
 	if err != nil {
 		panic(fmt.Sprintf("创建Metrics客户端失败: %v", err))
 	}
 
-	// 3. 获取所有Namespace的Pod
-	pods, err := coreClientset.CoreV1().Pods("").List(context.Background(), metav1.ListOptions{
+	pods, err := coreClientset.CoreV1().Pods(namespace).List(context.Background(), metav1.ListOptions{
 		TimeoutSeconds: int64Ptr(30),
 	})
 	if err != nil {
@@ -65,7 +53,7 @@ func Get() {
 	}
 
 	// 4. 获取所有Pod的Metrics数据
-	podMetricsList, err := metricsClientset.MetricsV1beta1().PodMetricses("").List(context.Background(), metav1.ListOptions{
+	podMetricsList, err := metricsClientset.MetricsV1beta1().PodMetricses(namespace).List(context.Background(), metav1.ListOptions{
 		TimeoutSeconds: int64Ptr(30),
 	})
 	if err != nil {
@@ -100,10 +88,10 @@ func Get() {
 		for _, container := range pod.Spec.Containers {
 			// CPU资源（单位：nano cores，1 CPU = 1e9 nano cores）
 			if req, ok := container.Resources.Requests[corev1.ResourceCPU]; ok {
-				cpuRequest += req.Value()
+				cpuRequest += req.Value() * 1000
 			}
 			if lim, ok := container.Resources.Limits[corev1.ResourceCPU]; ok {
-				cpuLimit += lim.Value()
+				cpuLimit += lim.Value() * 1000
 			}
 
 			// 内存资源（单位：bytes）
@@ -122,13 +110,14 @@ func Get() {
 			for _, containerMetrics := range podMetrics.Containers {
 				cpuUsage += containerMetrics.Usage.Cpu().MilliValue()
 				memUsage += containerMetrics.Usage.Memory().Value()
+
 			}
 		}
 
 		// 计算使用率（相对于限制，无限制则显示"无限制"）
 		cpuUsageRate := 0.0
 		if cpuLimit > 0 && hasMetrics {
-			cpuUsageRate = math.Round((float64(cpuUsage)/float64(cpuLimit*1000))*100*100) / 100 // 保留2位小数
+			cpuUsageRate = math.Round((float64(cpuUsage)/float64(cpuLimit))*100*100) / 100 // 保留2位小数
 		}
 
 		memUsageRate := 0.0
@@ -140,8 +129,8 @@ func Get() {
 		usageList = append(usageList, PodResourceUsage{
 			Namespace:    pod.Namespace,
 			PodName:      pod.Name,
-			CPURequest:   formatCPU(cpuRequest * 1000),
-			CPULimit:     formatCPU(cpuLimit * 1000),
+			CPURequest:   formatCPU(cpuRequest),
+			CPULimit:     formatCPU(cpuLimit),
 			CPUUsage:     formatCPU(cpuUsage),
 			CPUUsageRate: cpuUsageRate,
 			MemRequest:   formatMemory(memRequest),
@@ -164,14 +153,6 @@ func Get() {
 
 // 格式化CPU单位（nano cores -> m/CPU）
 func formatCPU(milliCores int64) string {
-	//if nanoCores == 0 {
-	//	return "0m"
-	//}
-	//milliCores := nanoCores / 1e6 // 转换为毫核（1 CPU = 1000m）
-	//if milliCores >= 1000 {
-	//	return fmt.Sprintf("%.1f", float64(milliCores)/1000)
-	//}
-	//return fmt.Sprintf("%dm", milliCores)
 	return fmt.Sprintf("%dm", milliCores)
 }
 
