@@ -5,7 +5,7 @@ go 1.23.0
 toolchain go1.23.3
 
 require (
-	github.com/aliyun/alibaba-cloud-sdk-go v1.63.8
+	github.com/aliyun/alibaba-cloud-sdk-go v1.63.107
 	github.com/huaweicloud/huaweicloud-sdk-go-v3 v0.1.111
 	github.com/kr/pretty v0.3.1
 	github.com/tealeg/xlsx v1.0.5
