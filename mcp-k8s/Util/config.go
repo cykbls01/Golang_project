@@ -1,4 +1,4 @@
-package Cluster
+package Util
 
 import (
 	"fmt"

@@ -1,92 +1,39 @@
-package Pod
+package Service
 
 import (
-	"context"
 	"fmt"
 	corev1 "k8s.io/api/core/v1"
-	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	"k8s.io/client-go/kubernetes"
-	"k8s.io/client-go/tools/clientcmd"
 	metricsv1beta1 "k8s.io/metrics/pkg/apis/metrics/v1beta1"
-	"k8s.io/metrics/pkg/client/clientset/versioned"
 	"math"
+	"mcp-k8s/Model"
+	"mcp-k8s/Repository/Pod"
 	"sort"
 )
 
-// PodResourceUsage 存储Pod资源使用信息
-type PodResourceUsage struct {
-	Namespace    string
-	PodName      string
-	CPURequest   string  // 请求CPU（格式化后）
-	CPULimit     string  // 限制CPU（格式化后）
-	CPUUsage     string  // 实际使用CPU（格式化后）
-	CPUUsageRate float64 // CPU使用率（相对于限制，百分比）
-	MemRequest   string  // 请求内存（格式化后）
-	MemLimit     string  // 限制内存（格式化后）
-	MemUsage     string  // 实际使用内存（格式化后）
-	MemUsageRate float64 // 内存使用率（相对于限制，百分比）
-	PodStatus    corev1.PodPhase
-	StartTime    metav1.Time
-}
+func GetMetrics(filepath, namespace string) {
+	pods, _ := Pod.Pods(filepath, namespace)
+	podMetricsList := Pod.Metrics(filepath, namespace)
 
-func Get(filepath, namespace string) {
-	config, err := clientcmd.BuildConfigFromFlags("", filepath)
-	if err != nil {
-		panic(fmt.Sprintf("加载K8s配置失败: %v", err))
-	}
-
-	coreClientset, err := kubernetes.NewForConfig(config)
-	if err != nil {
-		panic(fmt.Sprintf("创建核心客户端失败: %v", err))
-	}
-
-	metricsClientset, err := versioned.NewForConfig(config)
-	if err != nil {
-		panic(fmt.Sprintf("创建Metrics客户端失败: %v", err))
-	}
-
-	pods, err := coreClientset.CoreV1().Pods(namespace).List(context.Background(), metav1.ListOptions{
-		TimeoutSeconds: int64Ptr(30),
-	})
-	if err != nil {
-		panic(fmt.Sprintf("获取Pod列表失败: %v", err))
-	}
-
-	// 4. 获取所有Pod的Metrics数据
-	podMetricsList, err := metricsClientset.MetricsV1beta1().PodMetricses(namespace).List(context.Background(), metav1.ListOptions{
-		TimeoutSeconds: int64Ptr(30),
-	})
-	if err != nil {
-		panic(fmt.Sprintf("获取Pod Metrics失败: %v", err))
-	}
-
-	// 构建Metrics缓存（namespace/podName -> PodMetrics）
 	metricsCache := make(map[string]metricsv1beta1.PodMetrics)
 	for _, pm := range podMetricsList.Items {
 		key := fmt.Sprintf("%s/%s", pm.Namespace, pm.Name)
 		metricsCache[key] = pm
 	}
 
-	// 5. 计算每个Pod的资源使用率
-	var usageList []PodResourceUsage
+	var usageList []Model.PodResourceUsage
 	for _, pod := range pods.Items {
-		// 跳过已终止的Pod
 		if pod.Status.Phase == corev1.PodSucceeded || pod.Status.Phase == corev1.PodFailed {
 			continue
 		}
 
-		// 从缓存获取当前Pod的Metrics
 		metricsKey := fmt.Sprintf("%s/%s", pod.Namespace, pod.Name)
 		podMetrics, hasMetrics := metricsCache[metricsKey]
-
-		// 计算Pod级别的资源请求/限制（汇总所有容器）
 		cpuRequest := int64(0)
 		cpuLimit := int64(0)
 		memRequest := int64(0)
 		memLimit := int64(0)
 
 		for _, container := range pod.Spec.Containers {
-			// CPU资源（单位：nano cores，1 CPU = 1e9 nano cores）
 			if req, ok := container.Resources.Requests[corev1.ResourceCPU]; ok {
 				cpuRequest += req.Value() * 1000
 			}
@@ -94,7 +41,6 @@ func Get(filepath, namespace string) {
 				cpuLimit += lim.Value() * 1000
 			}
 
-			// 内存资源（单位：bytes）
 			if req, ok := container.Resources.Requests[corev1.ResourceMemory]; ok {
 				memRequest += req.Value()
 			}
@@ -126,7 +72,7 @@ func Get(filepath, namespace string) {
 		}
 
 		// 格式化输出（转换为人类可读单位）
-		usageList = append(usageList, PodResourceUsage{
+		usageList = append(usageList, Model.PodResourceUsage{
 			Namespace:    pod.Namespace,
 			PodName:      pod.Name,
 			CPURequest:   formatCPU(cpuRequest),
@@ -137,8 +83,6 @@ func Get(filepath, namespace string) {
 			MemLimit:     formatMemory(memLimit),
 			MemUsage:     formatMemory(memUsage),
 			MemUsageRate: memUsageRate,
-			PodStatus:    pod.Status.Phase,
-			StartTime:    *pod.Status.StartTime,
 		})
 	}
 
@@ -174,7 +118,7 @@ func formatMemory(bytes int64) string {
 }
 
 // 打印资源使用表格
-func printUsageTable(usageList []PodResourceUsage) {
+func printUsageTable(usageList []Model.PodResourceUsage) {
 	// 表头
 	fmt.Printf("%-15s %-30s %-10s %-10s %-10s %-8s %-12s %-12s %-12s %-8s %-20s\n",
 		"命名空间", "Pod名称", "CPU请求", "CPU限制", "CPU使用", "CPU使用率(%)",
@@ -205,12 +149,6 @@ func printUsageTable(usageList []PodResourceUsage) {
 			usage.MemLimit,
 			usage.MemUsage,
 			memRateStr,
-			usage.PodStatus,
 		)
 	}
-}
-
-// 辅助函数：int64指针转换
-func int64Ptr(i int64) *int64 {
-	return &i
 }
