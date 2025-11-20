@@ -1,4 +1,4 @@
-package Service
+package mcp
 
 import (
 	"fmt"
@@ -6,13 +6,14 @@ import (
 	metricsv1beta1 "k8s.io/metrics/pkg/apis/metrics/v1beta1"
 	"math"
 	"mcp-k8s/Model"
-	"mcp-k8s/Repository/Pod"
+	"mcp-k8s/Repository/Cluster"
 	"sort"
 )
 
 func GetMetrics(filepath, namespace string) {
-	pods, _ := Pod.Pods(filepath, namespace)
-	podMetricsList := Pod.Metrics(filepath, namespace)
+	cluster, _ := Cluster.Build(filepath)
+	pods, _ := cluster.Pods(namespace)
+	podMetricsList := Cluster.Metrics(filepath, namespace)
 
 	metricsCache := make(map[string]metricsv1beta1.PodMetrics)
 	for _, pm := range podMetricsList.Items {
