@@ -9,7 +9,6 @@ import (
 func main() {
 	Util.Pre()
 	Util.InitDB()
-	Util.DB.Exec("Truncate Table service")
 	task.UpdateServices(os.Args[1])
 	Util.Post()
 }

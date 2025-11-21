@@ -38,6 +38,7 @@ func GetEndpoints(filepath, namespace string) []Model.Service {
 			NodePort:    Util.PluckAndJoin(service.Spec.Ports, "NodePort", ","),
 			TargetPort:  Util.PluckAndJoinNested(service.Spec.Ports, "TargetPort.IntVal", ","),
 			ClusterName: Cluster.GetName(filepath),
+			ClusterID:   Cluster.GetName(filepath),
 			CreateTime:  service.CreationTimestamp.Time,
 		}
 
@@ -57,6 +58,11 @@ func GetEndpoints(filepath, namespace string) []Model.Service {
 		case "LoadBalancer":
 			{
 				svc.IP = Util.PluckAndJoin(service.Status.LoadBalancer.Ingress, "IP", ",")
+				res = append(res, svc)
+			}
+		case "ClusterIP":
+			{
+				svc.IP = service.Spec.ClusterIP
 				res = append(res, svc)
 			}
 		default:

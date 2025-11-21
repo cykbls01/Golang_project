@@ -1,11 +1,34 @@
 package Util
 
 import (
+	"errors"
 	"fmt"
 	"reflect"
 	"strings"
 	"time"
 )
+
+func SaveFromFunc[T any](path string, f func(string, string) []T) error {
+	data := f(path, "")
+	if len(data) == 0 {
+		fmt.Println("⚠️  没有需要保存的数据")
+		return nil
+	}
+
+	var saveErrs []error
+	for idx, item := range data {
+		if err := DB.Save(&item).Error; err != nil {
+			saveErrs = append(saveErrs, fmt.Errorf("第%d条数据保存失败: %w", idx+1, err))
+			continue
+		}
+		fmt.Printf("✅ 成功保存数据: %+v\n", item)
+	}
+
+	if len(saveErrs) > 0 {
+		return fmt.Errorf("总共有%d条数据保存失败: %w", len(saveErrs), errors.Join(saveErrs...))
+	}
+	return nil
+}
 
 func PluckAndJoin[T any](arr []T, fieldName string, separator ...string) string {
 	// 处理分隔符默认值

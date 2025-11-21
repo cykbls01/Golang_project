@@ -16,7 +16,6 @@ type Service struct {
 	WorkloadName string    `gorm:"column:workload_name;type:varchar(120);default:null" json:"workloadName"`
 	WorkloadType string    `gorm:"column:workload_type;type:varchar(120);default:null" json:"workloadType"`
 	CreateTime   time.Time `gorm:"column:create_time;autoCreateTime;null" json:"create_time"`
-	CreatedAt    time.Time
 	UpdatedAt    time.Time
 }
 
